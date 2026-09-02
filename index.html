@@ -1195,8 +1195,9 @@
         <button onclick="toggleChat()" class="w-14 h-14 rounded-full bg-gradient-to-tr from-medical-primary to-medical-secondary text-white shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition transform duration-200 focus:outline-none">
             <i class="fa-solid fa-robot"></i>
         </button>
-        <div id="ai-chat-window" class="hidden absolute bottom-20 right-0 w-80 sm:w-96 bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col h-[500px] animate-fade-in">
-            <div class="bg-gradient-to-r from-slate-900 to-medical-dark text-white p-4 flex items-center justify-between">
+        <!-- FIX: Chat window now uses max-h-[80vh] and overflow-auto -->
+        <div id="ai-chat-window" class="hidden absolute bottom-20 right-0 w-80 sm:w-96 bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[80vh] animate-fade-in">
+            <div class="bg-gradient-to-r from-slate-900 to-medical-dark text-white p-4 flex items-center justify-between flex-shrink-0">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-xl bg-medical-500/20 border border-medical-500/40 flex items-center justify-center text-medical-400">
                         <i class="fa-solid fa-robot"></i>
@@ -1210,7 +1211,7 @@
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
-            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 chat-scroll bg-slate-50 text-sm">
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 chat-scroll bg-slate-50 text-sm min-h-0">
                 <div class="flex items-start space-x-2">
                     <div class="w-8 h-8 rounded-full bg-medical-primary text-white flex items-center justify-center text-xs font-bold shrink-0">AI</div>
                     <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-sm text-slate-700 shadow-sm max-w-[85%]">
@@ -1218,12 +1219,12 @@
                     </div>
                 </div>
             </div>
-            <div class="px-3 py-2 bg-slate-100 flex gap-1.5 overflow-x-auto text-[11px]">
+            <div class="px-3 py-2 bg-slate-100 flex gap-1.5 overflow-x-auto text-[11px] flex-shrink-0">
                 <button onclick="sendQuickPrompt('What are your working hours?')" class="bg-white border border-slate-200 px-2.5 py-1 rounded-full whitespace-nowrap text-slate-700 hover:bg-slate-50">Hours</button>
                 <button onclick="sendQuickPrompt('How do I book an appointment?')" class="bg-white border border-slate-200 px-2.5 py-1 rounded-full whitespace-nowrap text-slate-700 hover:bg-slate-50">Booking</button>
                 <button onclick="sendQuickPrompt('Where is PUNTLAND Speciality Clinic located?')" class="bg-white border border-slate-200 px-2.5 py-1 rounded-full whitespace-nowrap text-slate-700 hover:bg-slate-50">Location</button>
             </div>
-            <div class="p-3 bg-white border-t border-slate-200 flex items-center space-x-2">
+            <div class="p-3 bg-white border-t border-slate-200 flex items-center space-x-2 flex-shrink-0">
                 <input type="text" id="chat-input" placeholder="Type your question..." onkeypress="handleChatKey(event)" class="flex-1 bg-slate-100 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-medical-primary">
                 <button onclick="sendChatMessage()" class="w-10 h-10 rounded-xl bg-medical-primary text-white flex items-center justify-center hover:bg-medical-600 transition shadow">
                     <i class="fa-solid fa-paper-plane text-xs"></i>
@@ -1233,8 +1234,9 @@
     </div>
 
     <!-- ============ BOOKING MODAL ============ -->
-    <div id="booking-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl relative animate-fade-in">
+    <!-- FIX: Added overflow-y-auto to overlay and max-h-[90vh] to inner container -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl relative animate-fade-in max-h-[90vh] overflow-y-auto my-8">
             <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
