@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PUNTLAND Speciality Clinic | Expert Healthcare With A Personal Touch - Jijiga</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUNTLAND Speciality Clinic | Expert Healthcare With A Personal Touch - Garowe</title>
+
+    <!-- ===== DNS PREFETCH ===== -->
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+    <!-- ===== PRELOAD FIRST HERO IMAGE ===== -->
+    <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/africantycoons1-spec/PUNTLAND-Speciality-Clinic@main/puntland_resources/hero-1.jpg?w=1000&q=60">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com">
@@ -34,7 +44,7 @@
     </script>
     <!-- FontAwesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Three.js for 3D Background Particles -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
@@ -76,7 +86,6 @@
             animation: fadeIn 0.3s ease-out forwards;
         }
 
-        /* ============ SCROLL REVEAL ANIMATIONS ============ */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -114,7 +123,6 @@
             transform: scale(1);
         }
 
-        /* ============ TYPING TEXT CURSOR ============ */
         .typing-cursor {
             display: inline-block;
             width: 3px;
@@ -124,16 +132,10 @@
             animation: cursorBlink 0.8s step-end infinite;
         }
         @keyframes cursorBlink {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
-        /* ============ BACK TO TOP BUTTON ============ */
         #back-to-top {
             position: fixed;
             bottom: 100px;
@@ -166,7 +168,6 @@
             box-shadow: 0 8px 30px rgba(2, 132, 199, 0.5);
         }
 
-        /* ============ FLOATING ACTION BUTTONS ============ */
         .floating-actions {
             position: fixed;
             bottom: 100px;
@@ -205,20 +206,14 @@
             box-shadow: 0 6px 25px rgba(2, 132, 199, 0.4);
         }
 
-        /* ============ FADE PAGE TRANSITION ============ */
         .page-transition {
             animation: pageFadeIn 0.6s ease-out forwards;
         }
         @keyframes pageFadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
-        /* ============ STATS COUNTER ============ */
         .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
@@ -233,7 +228,6 @@
             margin-top: 4px;
         }
 
-        /* ============ DROPDOWN NAVIGATION ============ */
         .dropdown-menu {
             opacity: 0;
             visibility: hidden;
@@ -248,7 +242,6 @@
         .dropdown-item {
             transition: background 0.15s ease, color 0.15s ease;
         }
-        /* Mobile submenu toggle */
         .mobile-submenu {
             max-height: 0;
             overflow: hidden;
@@ -258,10 +251,201 @@
             max-height: 500px;
         }
 
-        @media (max-width: 640px) {
-            .stat-number {
-                font-size: 1.8rem;
+        /* ===== MODAL ===== */
+        #booking-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        #booking-modal.show {
+            display: flex;
+        }
+        #booking-modal .modal-inner {
+            position: relative;
+            background: white;
+            border-radius: 24px;
+            max-width: 480px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 32px 28px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 0.3s ease-out forwards;
+            -webkit-overflow-scrolling: touch;
+        }
+        #booking-modal .modal-close {
+            position: sticky;
+            top: 0;
+            float: right;
+            font-size: 24px;
+            color: #94a3b8;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px 4px 4px 12px;
+            z-index: 10;
+            transition: color 0.2s;
+        }
+        #booking-modal .modal-close:hover {
+            color: #1e293b;
+        }
+        @media (max-width: 480px) {
+            #booking-modal .modal-inner {
+                padding: 24px 16px;
+                max-height: 90vh;
             }
+        }
+
+        /* ===== AI CHAT ===== */
+        #ai-chat-window {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 9998;
+            width: 360px;
+            max-width: calc(100vw - 40px);
+            max-height: 65vh;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid #e2e8f0;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        #ai-chat-window.show {
+            display: flex;
+        }
+        @media (max-width: 480px) {
+            #ai-chat-window {
+                right: 10px;
+                width: calc(100vw - 20px);
+                max-height: 60vh;
+                bottom: 72px;
+            }
+        }
+        #ai-chat-window .chat-header {
+            background: linear-gradient(to right, #0f172a, #0284c7);
+            color: white;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+        #ai-chat-window .chat-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            background: #f8fafc;
+            min-height: 200px;
+        }
+        #ai-chat-window .chat-footer {
+            padding: 10px 14px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+        #ai-chat-window .chat-footer input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 14px;
+            outline: none;
+        }
+        #ai-chat-window .chat-footer input:focus {
+            border-color: #0284c7;
+        }
+        #ai-chat-window .chat-footer button {
+            background: #0284c7;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        #ai-chat-window .chat-footer button:hover {
+            background: #0ea5e9;
+        }
+
+        #chat-toggle-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9997;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0284c7, #0ea5e9);
+            color: white;
+            border: none;
+            box-shadow: 0 8px 30px rgba(2, 132, 199, 0.4);
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        #chat-toggle-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 40px rgba(2, 132, 199, 0.5);
+        }
+
+        .quick-prompt {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 11px;
+            color: #334155;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+        .quick-prompt:hover {
+            background: #f1f5f9;
+        }
+
+        #toast-notification {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 99999;
+            background: #0f172a;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            display: none;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid #334155;
+            max-width: 90vw;
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        #toast-notification.show {
+            display: flex;
         }
     </style>
 </head>
@@ -274,13 +458,15 @@
                 <span class="flex items-center"><i class="fa-solid fa-phone-volume text-emerald-400 mr-2 animate-pulse"></i> <span data-i18n="emergency_label">Emergency</span>: <strong class="text-white ml-1 font-mono tracking-wide">+2519000000</strong></span>
                 <span class="hidden md:flex items-center">
                     <i class="fa-solid fa-location-dot text-medical-primary mr-2"></i>
-                    <a href="https://share.google/m93yARfTiDm74CR3z" target="_blank" class="text-slate-300 hover:text-white underline decoration-medical-primary decoration-2 transition">Jigjiga Map Location</a>
+                    <a href="https://maps.app.goo.gl/your-map-link" target="_blank" class="text-slate-300 hover:text-white underline decoration-medical-primary decoration-2 transition">Garowe Map Location</a>
                 </span>
             </div>
             <div class="flex items-center space-x-4">
                 <span class="flex items-center"><i class="fa-regular fa-clock text-medical-accent mr-2"></i> <span data-i18n="hours_label">Open 24/7 Emergency & Inpatient</span></span>
-                <div class="flex space-x-3 text-white items-center">
-                    <a href="https://wa.me/2519000000" target="_blank" class="hover:text-emerald-400 transition flex items-center space-x-1 bg-emerald-600/30 px-2.5 py-1 rounded-md text-[11px] font-semibold"><i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i> <span>WhatsApp</span></a>
+                <div class="flex items-center gap-1 md:gap-3 text-white">
+                    <a href="https://www.tiktok.com/@your-tiktok" target="_blank" class="hover:text-emerald-400 transition flex items-center space-x-0.5 bg-slate-700/50 px-1.5 md:px-2.5 py-1 rounded-md text-[10px] md:text-[11px] font-semibold"><i class="fa-brands fa-tiktok text-xs md:text-sm"></i> <span class="hidden md:inline">TikTok</span></a>
+                    <a href="https://www.youtube.com/@your-youtube" target="_blank" class="hover:text-emerald-400 transition flex items-center space-x-0.5 bg-slate-700/50 px-1.5 md:px-2.5 py-1 rounded-md text-[10px] md:text-[11px] font-semibold"><i class="fa-brands fa-youtube text-xs md:text-sm"></i> <span class="hidden md:inline">YouTube</span></a>
+                    <a href="https://web.facebook.com/your-facebook" target="_blank" class="hover:text-emerald-400 transition flex items-center space-x-0.5 bg-slate-700/50 px-1.5 md:px-2.5 py-1 rounded-md text-[10px] md:text-[11px] font-semibold"><i class="fa-brands fa-facebook text-xs md:text-sm"></i> <span class="hidden md:inline">Facebook</span></a>
                 </div>
             </div>
         </div>
@@ -290,24 +476,21 @@
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-8 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-medical-primary to-medical-accent flex items-center justify-center text-white font-bold text-xl shadow-md">
-                    <i class="fa-solid fa-house-medical"></i>
-                </div>
-                <div>
-                    <span class="text-2xl font-extrabold tracking-tight text-slate-900">PUNTLAND <span class="text-medical-primary">Speciality Clinic</span></span>
-                    <span class="block text-[10px] uppercase tracking-widest text-slate-500 font-semibold" data-i18n="tagline">Private Medical Center</span>
-                </div>
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 shadow-md">
+                        <img src="https://cdn.jsdelivr.net/gh/africantycoons1-spec/PUNTLAND-Speciality-Clinic@main/puntland_resources/puntland-logo.png" alt="PUNTLAND Speciality Clinic Logo" class="w-full h-full object-cover" loading="eager">
+                    </div>
+                    <div>
+                        <span class="text-2xl font-extrabold tracking-tight text-slate-900">PUNTLAND <span class="text-medical-primary">Speciality Clinic</span></span>
+                        <span class="block text-[10px] uppercase tracking-widest text-slate-500 font-semibold" data-i18n="tagline">Private Medical Center</span>
+                    </div>
+                </a>
             </div>
 
-            <!-- Desktop Navigation with Dropdowns -->
             <nav class="hidden lg:flex items-center space-x-6 font-medium text-sm text-slate-600">
                 <a href="index.html" class="text-medical-primary font-semibold transition hover:text-medical-primary" data-i18n="nav_home">Home</a>
-
-                <!-- Specialists Dropdown -->
                 <div class="relative group">
-                    <a href="doctors.html" class="hover:text-medical-primary transition flex items-center gap-1" data-i18n="nav_doctors">
-                        Specialists <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
-                    </a>
+                    <a href="doctors.html" class="hover:text-medical-primary transition flex items-center gap-1" data-i18n="nav_doctors">Specialists <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i></a>
                     <div class="dropdown-menu absolute left-0 top-full pt-2 w-52 z-50">
                         <div class="bg-white rounded-xl shadow-xl border border-slate-100 py-2">
                             <a href="doctors.html" class="dropdown-item block px-4 py-2 text-sm text-slate-700 hover:bg-medical-50 hover:text-medical-primary">All Specialists</a>
@@ -318,12 +501,8 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Services Dropdown -->
                 <div class="relative group">
-                    <a href="medical_services.html" class="hover:text-medical-primary transition flex items-center gap-1" data-i18n="nav_services">
-                        Services <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
-                    </a>
+                    <a href="medical_services.html" class="hover:text-medical-primary transition flex items-center gap-1" data-i18n="nav_services">Services <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i></a>
                     <div class="dropdown-menu absolute left-0 top-full pt-2 w-56 z-50">
                         <div class="bg-white rounded-xl shadow-xl border border-slate-100 py-2">
                             <a href="medical_services.html#general-medicine" class="dropdown-item block px-4 py-2 text-sm text-slate-700 hover:bg-medical-50 hover:text-medical-primary">General Medicine</a>
@@ -335,12 +514,8 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Patient Info Dropdown -->
                 <div class="relative group">
-                    <a href="patient_info.html" class="hover:text-medical-primary transition flex items-center gap-1" data-i18n="nav_patient_info">
-                        Patient Info <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
-                    </a>
+                    <a href="patient_info.html" class="hover:text-medical-primary transition flex items-center gap-1" data-i18n="nav_patient_info">Patient Info <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i></a>
                     <div class="dropdown-menu absolute left-0 top-full pt-2 w-52 z-50">
                         <div class="bg-white rounded-xl shadow-xl border border-slate-100 py-2">
                             <a href="patient_info.html#before-visit" class="dropdown-item block px-4 py-2 text-sm text-slate-700 hover:bg-medical-50 hover:text-medical-primary">Before Your Visit</a>
@@ -349,12 +524,10 @@
                         </div>
                     </div>
                 </div>
-
                 <a href="index.html#contact" class="hover:text-medical-primary transition" data-i18n="nav_contact">Contact</a>
             </nav>
 
             <div class="hidden sm:flex items-center space-x-3">
-                <!-- Language Selector -->
                 <div class="relative">
                     <button onclick="toggleLangDropdown()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-3.5 py-2.5 rounded-xl text-sm flex items-center space-x-1.5 transition">
                         <i class="fa-solid fa-globe text-medical-primary"></i>
@@ -372,11 +545,11 @@
                 </button>
             </div>
 
-            <!-- Mobile menu button -->
             <div class="lg:hidden flex items-center space-x-2">
-                <button onclick="toggleLangDropdown()" class="bg-slate-100 text-slate-700 px-3 py-2 rounded-xl text-xs font-bold flex items-center space-x-1">
+                <button id="lang-toggle-btn" onclick="toggleLangDropdown()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-3.5 py-2.5 rounded-xl text-sm flex items-center space-x-1.5 transition">
                     <i class="fa-solid fa-globe text-medical-primary"></i>
-                    <span id="mobile-lang-label">EN</span>
+                    <span id="mobile-lang-label">English</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 hidden md:inline"></i>
                 </button>
                 <button id="mobile-menu-btn" class="text-slate-700 focus:outline-none text-xl p-2">
                     <i class="fa-solid fa-bars"></i>
@@ -384,11 +557,9 @@
             </div>
         </div>
 
-        <!-- Mobile Menu with accordion submenus -->
+        <!-- ===== MOBILE MENU ===== -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-2">
             <a href="index.html" onclick="toggleMobileMenu()" class="block text-slate-700 font-medium py-1" data-i18n="nav_home">Home</a>
-
-            <!-- Specialists Mobile -->
             <div class="mobile-accordion">
                 <button onclick="toggleMobileSubmenu(this)" class="flex items-center justify-between w-full text-slate-700 font-medium py-1 text-left">
                     <span data-i18n="nav_doctors">Specialists</span>
@@ -402,8 +573,6 @@
                     <a href="doctors.html#surgery" onclick="toggleMobileMenu()" class="block text-sm text-slate-600 py-1 hover:text-medical-primary">Surgery & Orthopedics</a>
                 </div>
             </div>
-
-            <!-- Services Mobile -->
             <div class="mobile-accordion">
                 <button onclick="toggleMobileSubmenu(this)" class="flex items-center justify-between w-full text-slate-700 font-medium py-1 text-left">
                     <span data-i18n="nav_services">Services</span>
@@ -418,8 +587,6 @@
                     <a href="medical_services.html#emergency" onclick="toggleMobileMenu()" class="block text-sm text-slate-600 py-1 hover:text-medical-primary">Emergency Care</a>
                 </div>
             </div>
-
-            <!-- Patient Info Mobile -->
             <div class="mobile-accordion">
                 <button onclick="toggleMobileSubmenu(this)" class="flex items-center justify-between w-full text-slate-700 font-medium py-1 text-left">
                     <span data-i18n="nav_patient_info">Patient Info</span>
@@ -431,9 +598,7 @@
                     <a href="patient_info.html#faq" onclick="toggleMobileMenu()" class="block text-sm text-slate-600 py-1 hover:text-medical-primary">FAQs</a>
                 </div>
             </div>
-
             <a href="index.html#contact" onclick="toggleMobileMenu()" class="block text-slate-700 font-medium py-1" data-i18n="nav_contact">Contact</a>
-
             <div class="pt-2 flex flex-col space-y-2 border-t border-slate-200 mt-2">
                 <div class="grid grid-cols-3 gap-2 pb-2">
                     <button onclick="setLanguage('en'); toggleMobileMenu();" class="bg-slate-100 text-slate-700 text-xs py-2 rounded-lg font-bold text-center">English</button>
@@ -448,31 +613,43 @@
     </header>
 
     <!-- ============ HERO SECTION ============ -->
-    <section id="home" class="relative text-white py-16 sm:py-24 lg:py-36 overflow-hidden min-h-[580px] lg:min-h-[680px] flex items-center">
-        <!-- Background Slide 1 -->
+    <section id="home" class="relative text-white py-16 sm:py-24 lg:py-36 overflow-hidden min-h-[580px] lg:min-h-[680px] flex items-center bg-slate-900">
+        <!-- Slide 1 -->
         <div class="hero-bg-slide absolute inset-0 transition-opacity duration-1000 opacity-100 z-0">
-            <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnGqHzCo6jcirV8T6G8QQlM_lPrar8N_kANickF7V_nbTUDKh8FZcYfDqC3b1ReG951IT4W8KL5Mj0UXLt79IWEvSm2Qgv6N7Y3s9aV9HjsI0xVJbFETLd6nWh-6kH0RuXh-F3H1d3z0HY=s680-w680-h510-rw" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0284c7/ffffff?text=PUNTLAND+Speciality+Clinic+Gate';" alt="PUNTLAND Speciality Clinic Gate" class="w-full h-full object-cover brightness-105 contrast-110">
+            <img src="https://cdn.jsdelivr.net/gh/africantycoons1-spec/PUNTLAND-Speciality-Clinic@main/puntland_resources/hero-1.jpg?w=1200&q=80" 
+                 fetchpriority="high" loading="eager"
+                 onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0284c7/ffffff?text=PUNTLAND+Speciality+Clinic+1';" 
+                 alt="PUNTLAND Speciality Clinic 1" 
+                 class="w-full h-full object-cover brightness-105 contrast-110">
         </div>
-        <!-- Background Slide 2 -->
+        <!-- Slide 2 -->
         <div class="hero-bg-slide absolute inset-0 transition-opacity duration-1000 opacity-0 z-0">
-            <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkrn4OvsprmCo3iAaTQkJ-C4FlwbewDi4UMALiuXLKb16TBh_jGnwxGnQ7clYGh-gvC7k6Wf6aspsZd1-hv1yIkNvFYA33Yu7PMdF7w6CUJfGV9XnEdMXKqNe3mV5yhBq50bEbrpgalpDY=s680-w680-h510-rw" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0d9488/ffffff?text=PUNTLAND+Speciality+Clinic+Entrance';" alt="PUNTLAND Speciality Clinic Entrance" class="w-full h-full object-cover brightness-105 contrast-110">
+            <img src="https://cdn.jsdelivr.net/gh/africantycoons1-spec/PUNTLAND-Speciality-Clinic@main/puntland_resources/hero-2.jpg?w=1200&q=80" 
+                 loading="lazy"
+                 onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0284c7/ffffff?text=PUNTLAND+Speciality+Clinic+2';" 
+                 alt="PUNTLAND Speciality Clinic 2" 
+                 class="w-full h-full object-cover brightness-105 contrast-110">
         </div>
-        <!-- Overlay -->
+        <!-- Slide 3 -->
+        <div class="hero-bg-slide absolute inset-0 transition-opacity duration-1000 opacity-0 z-0">
+            <img src="https://cdn.jsdelivr.net/gh/africantycoons1-spec/PUNTLAND-Speciality-Clinic@main/puntland_resources/hero-3.jpg?w=1200&q=80" 
+                 loading="lazy"
+                 onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0284c7/ffffff?text=PUNTLAND+Speciality+Clinic+3';" 
+                 alt="PUNTLAND Speciality Clinic 3" 
+                 class="w-full h-full object-cover brightness-105 contrast-110">
+        </div>
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-950/70 z-1"></div>
-        <!-- Three.js Particle Canvas -->
         <canvas class="webgl" id="hero-canvas"></canvas>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 w-full">
             <div class="max-w-3xl space-y-4 lg:space-y-6 text-center lg:text-left">
                 <div class="inline-flex items-center space-x-2 bg-slate-900/70 backdrop-blur-md px-4 py-1.5 rounded-full border border-slate-700 text-xs font-semibold text-medical-200 shadow-sm reveal">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span data-i18n="hero_badge">Jigjiga's Leading Private Healthcare Clinic</span>
+                    <span data-i18n="hero_badge">Garowe's Leading Private Healthcare Clinic</span>
                 </div>
-                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-white typing-effect" data-text="PUNTLAND Speciality Clinic – Expert Care">
-                    <!-- Typing effect replaces this -->
-                </h1>
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-amber-300 typing-effect" data-text="PUNTLAND Speciality Clinic – Expert Care" style="text-shadow: 0 2px 20px rgba(0,0,0,0.4), 0 4px 40px rgba(0,0,0,0.2);"></h1>
                 <p class="hidden md:block text-lg text-slate-200 max-w-2xl font-normal leading-relaxed drop-shadow reveal" data-i18n="hero_desc">
-                    Your Health Is Our Priority. With experienced specialists, modern diagnostic technology, and patient-centered treatment tailored for your family's well-being at PUNTLAND Speciality Clinic in Jijiga.
+                    Your Health Is Our Priority. With experienced specialists, modern diagnostic technology, and patient-centered treatment tailored for your family's well-being at PUNTLAND Speciality Clinic in Garowe.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2 reveal">
                     <button onclick="openBookingModal()" class="w-full sm:w-auto bg-medical-primary hover:bg-medical-secondary text-white font-bold px-6 py-3.5 rounded-xl shadow-xl hover:scale-105 transition transform duration-200 flex items-center justify-center text-sm sm:text-base">
@@ -490,14 +667,24 @@
     </section>
 
     <!-- ============ WELCOME SECTION ============ -->
-    <section class="w-full bg-slate-100/90 py-16 lg:py-24 border-b border-slate-200 reveal">
-        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+    <section class="w-full bg-slate-100/90 py-16 lg:py-24 border-b border-slate-200 reveal relative bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 relative">
+            
+            <!-- AMBULANCE IMAGE - LEFT SIDE -->
+            <div class="hidden lg:block absolute -left-24 top-1/2 -translate-y-1/2 w-36 h-36 opacity-80">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiE9qwk_W9p8z8lwmddEsNkKxB6vXqHafL_qST-HwSVw&s=10" alt="Ambulance" class="w-full h-full object-contain" loading="lazy">
+            </div>
+
+            <!-- AMBULANCE IMAGE - RIGHT SIDE -->
+            <div class="hidden lg:block absolute -right-24 top-1/2 -translate-y-1/2 w-36 h-36 opacity-80 scale-x-[-1]">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiE9qwk_W9p8z8lwmddEsNkKxB6vXqHafL_qST-HwSVw&s=10" alt="Ambulance" class="w-full h-full object-contain" loading="lazy">
+            </div>
+
+            <!-- MAIN CONTENT BOX -->
             <div class="bg-white rounded-3xl shadow-xl p-6 sm:p-12 border border-slate-100 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div class="lg:col-span-8 space-y-4">
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-medical-primary tracking-tight" data-i18n="welcome_mesh">Welcome to PUNTLAND Speciality Clinic</h2>
-                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
-                        PUNTLAND Speciality Clinic is located in the heart of Jijiga (<a href="https://share.google/m93yARfTiDm74CR3z" target="_blank" class="text-medical-primary underline font-semibold">View on Google Maps</a>).
-                    </p>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">PUNTLAND Speciality Clinic is located in the heart of Garowe (<a href="https://maps.app.goo.gl/your-map-link" target="_blank" class="text-medical-primary underline font-semibold">View on Google Maps</a>).</p>
                     <div class="flex items-center space-x-3 bg-rose-50 border border-rose-200 p-4 rounded-2xl text-rose-700 font-extrabold text-xs sm:text-base shadow-md">
                         <i class="fa-solid fa-phone-volume text-rose-600 text-xl animate-pulse"></i>
                         <span>CALL THESE NUMBERS FOR EMERGENCY!</span>
@@ -530,565 +717,112 @@
         </div>
     </section>
 
-    <!-- ============ STATS COUNTER SECTION ============ -->
+    <!-- ============ STATS SECTION ============ -->
     <section class="stats-section py-12 bg-white border-b border-slate-200 reveal">
         <div class="max-w-7xl mx-auto px-4 sm:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="stat-item">
-                    <span class="stat-number" data-target="5000">0</span>
-                    <span class="stat-label">Happy Patients</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-target="25">0</span>
-                    <span class="stat-label">Expert Doctors</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-target="15">0</span>
-                    <span class="stat-label">Years of Experience</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-target="100">0</span>
-                    <span class="stat-label">% Patient Satisfaction</span>
-                </div>
+                <div class="stat-item"><span class="stat-number" data-target="5000">0</span><span class="stat-label">Happy Patients</span></div>
+                <div class="stat-item"><span class="stat-number" data-target="25">0</span><span class="stat-label">Expert Doctors</span></div>
+                <div class="stat-item"><span class="stat-number" data-target="15">0</span><span class="stat-label">Years of Experience</span></div>
+                <div class="stat-item"><span class="stat-number" data-target="100">0</span><span class="stat-label">% Patient Satisfaction</span></div>
             </div>
         </div>
     </section>
 
-    <!-- ============ SPECIALISTS SECTION ============ -->
-    <section id="specialists" class="w-full bg-white py-16 lg:py-24 border-b border-slate-200 reveal">
-        <div class="max-w-7xl mx-auto px-4 sm:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-10">
-                <div class="space-y-3">
-                    <span class="text-medical-primary font-bold uppercase tracking-widest text-xs bg-medical-50 px-3.5 py-1.5 rounded-full" data-i18n="expert_team">Expert Medical Team</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900" data-i18n="specialists_heading">Meet Our Dedicated Specialists</h2>
-                    <p class="text-slate-600 max-w-xl text-sm sm:text-base" data-i18n="specialists_sub">Consult with senior physicians and specialists committed to your health and rapid recovery.</p>
-                </div>
-                <button onclick="openBookingModal()" class="hidden md:flex mt-4 md:mt-0 text-medical-primary font-bold text-sm items-center hover:underline">
-                    <span data-i18n="book_consultation">Book Consultation</span> <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
-                </button>
-            </div>
-
-            <!-- Filter Buttons -->
-            <div class="hidden md:flex flex-wrap gap-2 mb-8">
-                <button onclick="filterSpecialists('all')" id="filter-all" class="px-4 py-2 rounded-xl text-xs font-bold bg-medical-primary text-white shadow-sm transition">All Specialists</button>
-                <button onclick="filterSpecialists('general')" id="filter-general" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200 transition">General Practice</button>
-                <button onclick="filterSpecialists('internal')" id="filter-internal" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200 transition">Internal Medicine</button>
-                <button onclick="filterSpecialists('pediatrics')" id="filter-pediatrics" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200 transition">Pediatrics</button>
-                <button onclick="filterSpecialists('surgery')" id="filter-surgery" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200 transition">Surgery & Orthopedics</button>
-            </div>
-
-            <!-- Desktop 10-Doctor Grid -->
-            <div id="specialists-grid" class="hidden md:grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-                <!-- Doctor 1 -->
-                <div class="spec-card bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group" data-category="general">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4w38oUiNLsWGa7jvDRKYSAbmbT122MFWsPC_wqXjoZg&s=10" onerror="this.onerror=null;this.src='https://placehold.co/400x500/0284c7/ffffff?text=Dr.+Ahmed';" alt="Dr. Ahmed Omar" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
-                            <button onclick="openBookingModal()" class="w-full bg-white text-slate-900 font-bold py-2 rounded-xl text-xs shadow" data-i18n="book_appointment_card">Book Appointment</button>
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-slate-900 text-sm">Dr. Ahmed Omar</h3>
-                        <p class="text-[11px] text-medical-primary font-semibold uppercase tracking-wider mb-1" data-i18n="doc_spec_1">General Practitioner</p>
-                        <p class="text-[10px] text-slate-500">Primary Care</p>
-                    </div>
-                </div>
-                <!-- Doctor 2 -->
-                <div class="spec-card bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group" data-category="internal">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4-0ai-2w0g0B8JVALQp3K8eFGDCeI83Pru3f2CAZMTQ&s=10" onerror="this.onerror=null;this.src='https://placehold.co/400x500/0d9488/ffffff?text=Dr.+Fatima';" alt="Dr. Fatima Hassan" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
-                            <button onclick="openBookingModal()" class="w-full bg-white text-slate-900 font-bold py-2 rounded-xl text-xs shadow" data-i18n="book_appointment_card">Book Appointment</button>
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-slate-900 text-sm">Dr. Fatima Hassan</h3>
-                        <p class="text-[11px] text-medical-primary font-semibold uppercase tracking-wider mb-1" data-i18n="doc_spec_2">Internal Medicine</p>
-                        <p class="text-[10px] text-slate-500">Chronic Care</p>
-                    </div>
-                </div>
-                <!-- Doctor 3 -->
-                <div class="spec-card bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group" data-category="pediatrics">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaPSQ5HaUEtCaU2iePUcLNAkBoSB0c62Mp4EGkyG_K7w&s=10" onerror="this.onerror=null;this.src='https://placehold.co/400x500/0284c7/ffffff?text=Dr.+Ibrahim';" alt="Dr. Ibrahim Yusuf" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
-                            <button onclick="openBookingModal()" class="w-full bg-white text-slate-900 font-bold py-2 rounded-xl text-xs shadow" data-i18n="book_appointment_card">Book Appointment</button>
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-slate-900 text-sm">Dr. Ibrahim Yusuf</h3>
-                        <p class="text-[11px] text-medical-primary font-semibold uppercase tracking-wider mb-1" data-i18n="doc_spec_3">Pediatrics</p>
-                        <p class="text-[10px] text-slate-500">Child Health</p>
-                    </div>
-                </div>
-                <!-- Doctor 4 -->
-                <div class="spec-card bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group" data-category="surgery">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCNWDgE3dHUzy8Ak4ra4YdTV6hK288xK6zInm2I6PwwQ&s=10" onerror="this.onerror=null;this.src='https://placehold.co/400x500/0d9488/ffffff?text=Dr.+Samira';" alt="Dr. Samira Abdi" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
-                            <button onclick="openBookingModal()" class="w-full bg-white text-slate-900 font-bold py-2 rounded-xl text-xs shadow" data-i18n="book_appointment_card">Book Appointment</button>
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-slate-900 text-sm">Dr. Samira Abdi</h3>
-                        <p class="text-[11px] text-medical-primary font-semibold uppercase tracking-wider mb-1" data-i18n="doc_spec_4">Surgery</p>
-                        <p class="text-[10px] text-slate-500">Trauma Care</p>
-                    </div>
-                </div>
-                <!-- Doctor 5 -->
-                <div class="spec-card bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group" data-category="internal">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ27EhKVotCvokwOkU09_tueECsksa98n33XIsGrWEGvA&s=10" onerror="this.onerror=null;this.src='https://placehold.co/400x500/0284c7/ffffff?text=Dr.+Mohamed';" alt="Dr. Mohamed Ali" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
-                            <button onclick="openBookingModal()" class="w-full bg-white text-slate-900 font-bold py-2 rounded-xl text-xs shadow" data-i18n="book_appointment_card">Book Appointment</button>
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-slate-900 text-sm">Dr. Mohamed Ali</h3>
-                        <p class="text-[11px] text-medical-primary font-semibold uppercase tracking-wider mb-1">Cardiology</p>
-                        <p class="text-[10px] text-slate-500">Heart Specialist</p>
-                    </div>
-                </div>
-                <!-- Doctor 6 -->
-                <div class="spec-card bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group" data-category="general">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBbDbIC8QI8J-S3mLXorPegjFoyk4InOSyQ0NPL6t1sw&s=10" onerror="this.onerror=null;this.src='https://placehold.co/400x500/0d9488/ffffff?text=Dr.+Aysha';" alt="Dr. Aysha Nur" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
-                            <button onclick="openBookingModal()" class="w-full bg-white text-slate-900 font-bold py-2 rounded-xl text-xs shadow" data-i18n="book_appointment_card">Book Appointment</button>
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-slate-900 text-sm">Dr. Aysha Nur</h3>
-                        <p class="text-[11px] text-medical-primary font-semibold uppercase tracking-wider mb-1">Dermatology</p>
-                        <p class="text-[10px] text-slate-500">Skin Specialist</p>
-                    </div>
-                </div>
-                <!-- Doctor 7 -->
-                <div class="spec-card bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group" data-category="surgery">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRryw-KclIIgZVTMNWLsxIPFwpFMEhpdLSssI14Xnh82w&s=10" onerror="this.onerror=null;this.src='https://placehold.co/400x500/0284c7/ffffff?text=Dr.+Liban';" alt="Dr. Liban Jama" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
-                            <button onclick="openBookingModal()" class="w-full bg-white text-slate-900 font-bold py-2 rounded-xl text-xs shadow" data-i18n="book_appointment_card">Book Appointment</button>
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-slate-900 text-sm">Dr. Liban Jama</h3>
-                        <p class="text-[11px] text-medical-primary font-semibold uppercase tracking-wider mb-1">Ophthalmology</p>
-                        <p class="text-[10px] text-slate-500">Eye Specialist</p>
-                    </div>
-                </div>
-                <!-- Doctor 8 -->
-                <div class="spec-card bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group" data-category="pediatrics">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtTxZZIFE78yll0i3a6q-ZGVgR5SIUeySf9uXaxylFAQ&s=10" onerror="this.onerror=null;this.src='https://placehold.co/400x500/0d9488/ffffff?text=Dr.+Hodan';" alt="Dr. Hodan Warsame" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
-                            <button onclick="openBookingModal()" class="w-full bg-white text-slate-900 font-bold py-2 rounded-xl text-xs shadow" data-i18n="book_appointment_card">Book Appointment</button>
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-slate-900 text-sm">Dr. Hodan Warsame</h3>
-                        <p class="text-[11px] text-medical-primary font-semibold uppercase tracking-wider mb-1">Gynecology</p>
-                        <p class="text-[10px] text-slate-500">Women's Health</p>
-                    </div>
-                </div>
-                <!-- Doctor 9 -->
-                <div class="spec-card bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group" data-category="internal">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvg4gXYnbfWtU1iw4rGYM0xqxSkUl9r_wxIhiG42wTVA&s=10" onerror="this.onerror=null;this.src='https://placehold.co/400x500/0284c7/ffffff?text=Dr.+Mahad';" alt="Dr. Mahad Farah" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
-                            <button onclick="openBookingModal()" class="w-full bg-white text-slate-900 font-bold py-2 rounded-xl text-xs shadow" data-i18n="book_appointment_card">Book Appointment</button>
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-slate-900 text-sm">Dr. Mahad Farah</h3>
-                        <p class="text-[11px] text-medical-primary font-semibold uppercase tracking-wider mb-1">Neurology</p>
-                        <p class="text-[10px] text-slate-500">Brain & Nerve</p>
-                    </div>
-                </div>
-                <!-- Doctor 10 -->
-                <div class="spec-card bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group" data-category="general">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1chBRuWzJWDdADpxBa9zyLZx-oU5Tt8J2nCW8244_Kg&s=10" onerror="this.onerror=null;this.src='https://placehold.co/400x500/0d9488/ffffff?text=Dr.+Specialist';" alt="Dr. Specialist" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
-                            <button onclick="openBookingModal()" class="w-full bg-white text-slate-900 font-bold py-2 rounded-xl text-xs shadow" data-i18n="book_appointment_card">Book Appointment</button>
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-slate-900 text-sm">Dr. PUNTLAND Specialist</h3>
-                        <p class="text-[11px] text-medical-primary font-semibold uppercase tracking-wider mb-1">Specialist Physician</p>
-                        <p class="text-[10px] text-slate-500">Advanced Treatment</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mobile 4-Group Compact Specialists View -->
-            <div class="md:hidden space-y-8">
-                <!-- Group 1: General Practice -->
-                <div>
-                    <div class="border-b border-slate-200 pb-2 mb-4">
-                        <h3 class="font-bold text-medical-primary text-sm uppercase tracking-wider">General Practice</h3>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                        <div onclick="openBookingModal()" class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 p-2.5 flex flex-col items-center text-center shadow-xs">
-                            <div class="w-16 h-16 rounded-xl overflow-hidden mb-2 bg-slate-100">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4w38oUiNLsWGa7jvDRKYSAbmbT122MFWsPC_wqXjoZg&s=10" alt="Dr. Ahmed" class="w-full h-full object-cover">
-                            </div>
-                            <h4 class="font-bold text-slate-900 text-xs line-clamp-1">Dr. Ahmed Omar</h4>
-                            <p class="text-[10px] text-medical-primary font-medium">General Practitioner</p>
-                        </div>
-                        <div onclick="openBookingModal()" class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 p-2.5 flex flex-col items-center text-center shadow-xs">
-                            <div class="w-16 h-16 rounded-xl overflow-hidden mb-2 bg-slate-100">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBbDbIC8QI8J-S3mLXorPegjFoyk4InOSyQ0NPL6t1sw&s=10" alt="Dr. Aysha" class="w-full h-full object-cover">
-                            </div>
-                            <h4 class="font-bold text-slate-900 text-xs line-clamp-1">Dr. Aysha Nur</h4>
-                            <p class="text-[10px] text-medical-primary font-medium">Dermatology</p>
-                        </div>
-                        <div onclick="openBookingModal()" class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 p-2.5 flex flex-col items-center text-center shadow-xs col-span-2">
-                            <div class="w-16 h-16 rounded-xl overflow-hidden mb-2 bg-slate-100">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1chBRuWzJWDdADpxBa9zyLZx-oU5Tt8J2nCW8244_Kg&s=10" alt="Dr. PUNTLAND Specialist" class="w-full h-full object-cover">
-                            </div>
-                            <h4 class="font-bold text-slate-900 text-xs line-clamp-1">Dr. PUNTLAND Specialist</h4>
-                            <p class="text-[10px] text-medical-primary font-medium">Specialist Physician</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Group 2: Internal Medicine -->
-                <div>
-                    <div class="border-b border-slate-200 pb-2 mb-4">
-                        <h3 class="font-bold text-medical-primary text-sm uppercase tracking-wider">Internal Medicine</h3>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                        <div onclick="openBookingModal()" class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 p-2.5 flex flex-col items-center text-center shadow-xs">
-                            <div class="w-16 h-16 rounded-xl overflow-hidden mb-2 bg-slate-100">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4-0ai-2w0g0B8JVALQp3K8eFGDCeI83Pru3f2CAZMTQ&s=10" alt="Dr. Fatima" class="w-full h-full object-cover">
-                            </div>
-                            <h4 class="font-bold text-slate-900 text-xs line-clamp-1">Dr. Fatima Hassan</h4>
-                            <p class="text-[10px] text-medical-primary font-medium">Internal Medicine</p>
-                        </div>
-                        <div onclick="openBookingModal()" class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 p-2.5 flex flex-col items-center text-center shadow-xs">
-                            <div class="w-16 h-16 rounded-xl overflow-hidden mb-2 bg-slate-100">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ27EhKVotCvokwOkU09_tueECsksa98n33XIsGrWEGvA&s=10" alt="Dr. Mohamed" class="w-full h-full object-cover">
-                            </div>
-                            <h4 class="font-bold text-slate-900 text-xs line-clamp-1">Dr. Mohamed Ali</h4>
-                            <p class="text-[10px] text-medical-primary font-medium">Cardiology</p>
-                        </div>
-                        <div onclick="openBookingModal()" class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 p-2.5 flex flex-col items-center text-center shadow-xs col-span-2">
-                            <div class="w-16 h-16 rounded-xl overflow-hidden mb-2 bg-slate-100">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvg4gXYnbfWtU1iw4rGYM0xqxSkUl9r_wxIhiG42wTVA&s=10" alt="Dr. Mahad" class="w-full h-full object-cover">
-                            </div>
-                            <h4 class="font-bold text-slate-900 text-xs line-clamp-1">Dr. Mahad Farah</h4>
-                            <p class="text-[10px] text-medical-primary font-medium">Neurology</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Group 3: Pediatrics -->
-                <div>
-                    <div class="border-b border-slate-200 pb-2 mb-4">
-                        <h3 class="font-bold text-medical-primary text-sm uppercase tracking-wider">Pediatrics</h3>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                        <div onclick="openBookingModal()" class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 p-2.5 flex flex-col items-center text-center shadow-xs">
-                            <div class="w-16 h-16 rounded-xl overflow-hidden mb-2 bg-slate-100">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaPSQ5HaUEtCaU2iePUcLNAkBoSB0c62Mp4EGkyG_K7w&s=10" alt="Dr. Ibrahim" class="w-full h-full object-cover">
-                            </div>
-                            <h4 class="font-bold text-slate-900 text-xs line-clamp-1">Dr. Ibrahim Yusuf</h4>
-                            <p class="text-[10px] text-medical-primary font-medium">Pediatrics</p>
-                        </div>
-                        <div onclick="openBookingModal()" class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 p-2.5 flex flex-col items-center text-center shadow-xs">
-                            <div class="w-16 h-16 rounded-xl overflow-hidden mb-2 bg-slate-100">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtTxZZIFE78yll0i3a6q-ZGVgR5SIUeySf9uXaxylFAQ&s=10" alt="Dr. Hodan" class="w-full h-full object-cover">
-                            </div>
-                            <h4 class="font-bold text-slate-900 text-xs line-clamp-1">Dr. Hodan Warsame</h4>
-                            <p class="text-[10px] text-medical-primary font-medium">Gynecology</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Group 4: Surgery & Orthopedics -->
-                <div>
-                    <div class="border-b border-slate-200 pb-2 mb-4">
-                        <h3 class="font-bold text-medical-primary text-sm uppercase tracking-wider">Surgery & Orthopedics</h3>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                        <div onclick="openBookingModal()" class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 p-2.5 flex flex-col items-center text-center shadow-xs">
-                            <div class="w-16 h-16 rounded-xl overflow-hidden mb-2 bg-slate-100">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCNWDgE3dHUzy8Ak4ra4YdTV6hK288xK6zInm2I6PwwQ&s=10" alt="Dr. Samira" class="w-full h-full object-cover">
-                            </div>
-                            <h4 class="font-bold text-slate-900 text-xs line-clamp-1">Dr. Samira Abdi</h4>
-                            <p class="text-[10px] text-medical-primary font-medium">Surgery</p>
-                        </div>
-                        <div onclick="openBookingModal()" class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 p-2.5 flex flex-col items-center text-center shadow-xs">
-                            <div class="w-16 h-16 rounded-xl overflow-hidden mb-2 bg-slate-100">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRryw-KclIIgZVTMNWLsxIPFwpFMEhpdLSssI14Xnh82w&s=10" alt="Dr. Liban" class="w-full h-full object-cover">
-                            </div>
-                            <h4 class="font-bold text-slate-900 text-xs line-clamp-1">Dr. Liban Jama</h4>
-                            <p class="text-[10px] text-medical-primary font-medium">Ophthalmology</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ DEPARTMENTS / SERVICES SECTION ============ -->
-    <section id="services" class="w-full bg-teal-50/50 py-16 lg:py-24 border-b border-slate-200 reveal">
+    <!-- ============ SERVICES SECTION ============ -->
+    <section id="services" class="w-full py-16 lg:py-24 border-b border-slate-200 reveal">
         <div class="max-w-7xl mx-auto px-4 sm:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
                 <span class="text-medical-primary font-bold uppercase tracking-widest text-xs bg-white px-3.5 py-1.5 rounded-full shadow-sm" data-i18n="clinical_services">Clinical Services</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900" data-i18n="services_heading">Our Departments</h2>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group reveal">
-                    <div class="w-14 h-14 rounded-2xl bg-medical-50 text-medical-primary flex items-center justify-center text-2xl mb-6 group-hover:bg-medical-primary group-hover:text-white transition shadow-sm">
-                        <i class="fa-solid fa-heart-pulse"></i>
+                <!-- 1: General Medicine -->
+                <div class="bg-cover bg-center bg-no-repeat rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 border border-slate-200 group reveal" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP_VIHAYouWHhJ_cNFzKCNmgrS-IPHA8lA3qkjD8MKCw&s=10');">
+                    <div class="p-8 bg-gradient-to-b from-white/90 via-white/80 to-white/70 hover:bg-white/60 transition duration-300 h-full">
+                        <div class="w-14 h-14 rounded-2xl bg-medical-50 text-medical-primary flex items-center justify-center text-2xl mb-6 group-hover:bg-medical-primary group-hover:text-white transition shadow-sm"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="serv_1_title">General Medicine & Consultations</h3>
+                        <p class="text-slate-700 text-sm mb-6 leading-relaxed" data-i18n="serv_1_desc">Primary health evaluations, chronic illness management, routine wellness checks, and preventive care.</p>
+                        <button onclick="openServiceModal('General Medicine')" class="text-medical-primary font-semibold text-sm flex items-center hover:underline"><span data-i18n="learn_more">Learn More</span> <i class="fa-solid fa-chevron-right ml-2 text-xs"></i></button>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="serv_1_title">General Medicine & Consultations</h3>
-                    <p class="text-slate-600 text-sm mb-6 leading-relaxed" data-i18n="serv_1_desc">Primary health evaluations, chronic illness management, routine wellness checks, and preventive care.</p>
-                    <button onclick="openServiceModal('General Medicine')" class="text-medical-primary font-semibold text-sm flex items-center hover:underline">
-                        <span data-i18n="learn_more">Learn More</span> <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
-                    </button>
                 </div>
-                <!-- Service 2 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group reveal">
-                    <div class="w-14 h-14 rounded-2xl bg-medical-50 text-medical-primary flex items-center justify-center text-2xl mb-6 group-hover:bg-medical-primary group-hover:text-white transition shadow-sm">
-                        <i class="fa-solid fa-microscope"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="serv_2_title">Diagnostics & Laboratory</h3>
-                    <p class="text-slate-600 text-sm mb-6 leading-relaxed" data-i18n="serv_2_desc">High-precision digital lab testing, blood analysis, ultrasound diagnostics, and rapid screening.</p>
-                    <button onclick="openServiceModal('Diagnostics')" class="text-medical-primary font-semibold text-sm flex items-center hover:underline">
-                        <span data-i18n="learn_more">Learn More</span> <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
-                    </button>
-                </div>
-                <!-- Service 3 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group reveal">
-                    <div class="w-14 h-14 rounded-2xl bg-medical-50 text-medical-primary flex items-center justify-center text-2xl mb-6 group-hover:bg-medical-primary group-hover:text-white transition shadow-sm">
-                        <i class="fa-solid fa-child-reaching"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="serv_3_title">Pediatrics & Maternal Care</h3>
-                    <p class="text-slate-600 text-sm mb-6 leading-relaxed" data-i18n="serv_3_desc">Dedicated infant care, vaccination programs, prenatal support, and family health guidance.</p>
-                    <button onclick="openServiceModal('Pediatrics')" class="text-medical-primary font-semibold text-sm flex items-center hover:underline">
-                        <span data-i18n="learn_more">Learn More</span> <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
-                    </button>
-                </div>
-                <!-- Service 4 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group reveal">
-                    <div class="w-14 h-14 rounded-2xl bg-medical-50 text-medical-primary flex items-center justify-center text-2xl mb-6 group-hover:bg-medical-primary group-hover:text-white transition shadow-sm">
-                        <i class="fa-solid fa-pills"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Pharmacy Services</h3>
-                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">Fully stocked dispensary providing prescription medications, vaccines, and pharmaceutical consultations 24/7.</p>
-                    <button onclick="openServiceModal('Pharmacy Services')" class="text-medical-primary font-semibold text-sm flex items-center hover:underline">
-                        <span data-i18n="learn_more">Learn More</span> <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
-                    </button>
-                </div>
-                <!-- Service 5 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group reveal">
-                    <div class="w-14 h-14 rounded-2xl bg-medical-50 text-medical-primary flex items-center justify-center text-2xl mb-6 group-hover:bg-medical-primary group-hover:text-white transition shadow-sm">
-                        <i class="fa-solid fa-bed-pulse"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">ICU Services</h3>
-                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">Advanced Intensive Care Unit equipped with life-support monitors, ventilators, and specialized critical care nurses.</p>
-                    <button onclick="openServiceModal('ICU Services')" class="text-medical-primary font-semibold text-sm flex items-center hover:underline">
-                        <span data-i18n="learn_more">Learn More</span> <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
-                    </button>
-                </div>
-                <!-- Service 6 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 group reveal">
-                    <div class="w-14 h-14 rounded-2xl bg-medical-50 text-medical-primary flex items-center justify-center text-2xl mb-6 group-hover:bg-medical-primary group-hover:text-white transition shadow-sm">
-                        <i class="fa-solid fa-truck-medical"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Emergency Care Services</h3>
-                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">24/7 emergency response unit, trauma care, rapid triage, and ambulance dispatch for urgent medical attention.</p>
-                    <button onclick="openServiceModal('Emergency Care Services')" class="text-medical-primary font-semibold text-sm flex items-center hover:underline">
-                        <span data-i18n="learn_more">Learn More</span> <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ============ FACILITY SHOWCASE ============ -->
-    <section id="gallery" class="w-full bg-slate-950 text-white py-16 sm:py-20 lg:py-28 reveal">
-        <div class="max-w-[1440px] mx-auto px-3 sm:px-8 space-y-8 sm:space-y-12">
-            <div class="text-center max-w-2xl mx-auto space-y-3">
-                <span class="text-medical-accent font-bold uppercase tracking-widest text-xs bg-medical-900/60 px-3.5 py-1.5 rounded-full border border-medical-500/30">Facility Showcase</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">PUNTLAND Speciality Clinic Visual Tour</h2>
-                <p class="text-slate-300 text-sm sm:text-base">Explore our modern medical environment, advanced equipment, and specialized care rooms in Jijiga.</p>
-            </div>
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
-                <div class="overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-800 aspect-[4/3] sm:aspect-[16/11] bg-slate-900 group">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa-vGGEDAEotehSX7U1TerC1-BICch3fkDB9RW_z7iHw&s=10" onerror="this.onerror=null;this.src='https://placehold.co/800x550/0284c7/ffffff?text=PUNTLAND+Speciality+Clinic+1';" alt="PUNTLAND Speciality Clinic Facility 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <!-- 2: Diagnostics & Laboratory -->
+                <div class="bg-cover bg-center bg-no-repeat rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 border border-slate-200 group reveal" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2ZVgaGyjKARfpu2NBat-orOhkKEYQRVUuTq4oA-g1NA&s=10');">
+                    <div class="p-8 bg-gradient-to-b from-white/90 via-white/80 to-white/70 hover:bg-white/60 transition duration-300 h-full">
+                        <div class="w-14 h-14 rounded-2xl bg-medical-50 text-medical-primary flex items-center justify-center text-2xl mb-6 group-hover:bg-medical-primary group-hover:text-white transition shadow-sm"><i class="fa-solid fa-microscope"></i></div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="serv_2_title">Diagnostics & Laboratory</h3>
+                        <p class="text-slate-700 text-sm mb-6 leading-relaxed" data-i18n="serv_2_desc">High-precision digital lab testing, blood analysis, ultrasound diagnostics, and rapid screening.</p>
+                        <button onclick="openServiceModal('Diagnostics')" class="text-medical-primary font-semibold text-sm flex items-center hover:underline"><span data-i18n="learn_more">Learn More</span> <i class="fa-solid fa-chevron-right ml-2 text-xs"></i></button>
+                    </div>
                 </div>
-                <div class="overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-800 aspect-[4/3] sm:aspect-[16/11] bg-slate-900 group">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTNHNBgib9_eysWDGRusauDiDYHRJXcFzBujf4K8l4dQ&s=10" onerror="this.onerror=null;this.src='https://placehold.co/800x550/0d9488/ffffff?text=PUNTLAND+Speciality+Clinic+2';" alt="PUNTLAND Speciality Clinic Facility 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-800 aspect-[4/3] sm:aspect-[16/11] bg-slate-900 group">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFVZ7ZaYyjihDffZT_bQyPmnONBydvVTZx4LuxEbI08A&s=10" onerror="this.onerror=null;this.src='https://placehold.co/800x550/0284c7/ffffff?text=PUNTLAND+Speciality+Clinic+3';" alt="PUNTLAND Speciality Clinic Facility 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-800 aspect-[4/3] sm:aspect-[16/11] bg-slate-900 group">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFP4AAMYrakteEXlKdCBZLEl6Y3FMwCLsg6GeG4xqM0Q&s=10" onerror="this.onerror=null;this.src='https://placehold.co/800x550/0d9488/ffffff?text=PUNTLAND+Speciality+Clinic+4';" alt="PUNTLAND Speciality Clinic Facility 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-800 aspect-[4/3] sm:aspect-[16/11] bg-slate-900 group">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3J4rzbevXXMEgqhYBiOe_kyQiymd9IuHVqAzlZ-qpxQ&s=10" onerror="this.onerror=null;this.src='https://placehold.co/800x550/0284c7/ffffff?text=PUNTLAND+Speciality+Clinic+5';" alt="PUNTLAND Speciality Clinic Facility 5" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-800 aspect-[4/3] sm:aspect-[16/11] bg-slate-900 group">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3izETIwbHzcPlmtjYNQiu4glPg39xFRK0jYYpY-H_uQ&s=10" onerror="this.onerror=null;this.src='https://placehold.co/800x550/0d9488/ffffff?text=PUNTLAND+Speciality+Clinic+6';" alt="PUNTLAND Speciality Clinic Facility 6" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="col-span-2 lg:col-span-3 overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-800 aspect-[16/9] sm:aspect-[21/9] bg-slate-900 group">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThHgKtvmpCvxsYa3eRQ6Chfgn0Fj4cW43o8dvNihE4gQ&s=10" onerror="this.onerror=null;this.src='https://placehold.co/1400x600/0284c7/ffffff?text=PUNTLAND+Speciality+Clinic+Panorama';" alt="PUNTLAND Speciality Clinic Panorama" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ============ TESTIMONIALS ============ -->
-    <section class="w-full bg-slate-50 py-16 lg:py-24 border-b border-slate-200 reveal">
-        <div class="max-w-7xl mx-auto px-4 sm:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <span class="text-medical-primary font-bold uppercase tracking-widest text-xs bg-white px-3.5 py-1.5 rounded-full shadow-sm" data-i18n="patient_trust">Patient Trust</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900" data-i18n="testimonials_heading">What Our Patients Say</h2>
-                <p class="text-slate-600 text-sm sm:text-base" data-i18n="testimonials_sub">Real feedback from patients who received exceptional care at PUNTLAND Speciality Clinic.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Video Card 1 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 flex flex-col group reveal">
-                    <div class="relative overflow-hidden aspect-video bg-slate-900">
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600" onerror="this.onerror=null;this.src='https://placehold.co/600x338/0f172a/ffffff?text=Patient+Testimonial+1';" alt="Patient Testimonial 1 Thumbnail" class="w-full h-full object-cover opacity-85 group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-slate-950/30 flex items-center justify-center">
-                            <button onclick="playVideoPlaceholder()" class="w-14 h-14 rounded-full bg-medical-primary text-white flex items-center justify-center text-xl shadow-xl hover:scale-110 transition transform duration-200">
-                                <i class="fa-solid fa-play ml-0.5"></i>
-                            </button>
-                        </div>
-                        <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-[10px] font-semibold text-white uppercase tracking-wider">Patient Testimonial</div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                        <h3 class="font-bold text-slate-900 text-base">Patient Testimonial 1</h3>
-                        <p class="text-slate-600 text-sm italic leading-relaxed" data-i18n="test_1">"Deegaan nadiif ah, shaqaale edeb leh, iyo dhakhaatiir aqoon u leh shaqadooda. Mar walba waan ku talinayaa PUNTLAND Speciality Clinic."</p>
-                        <div class="flex items-center space-x-3 pt-2 border-t border-slate-100">
-                            <div class="w-8 h-8 rounded-full bg-medical-100 text-medical-primary font-bold text-xs flex items-center justify-center">P1</div>
-                            <div><h4 class="font-bold text-slate-900 text-xs">Verified Patient</h4><p class="text-[10px] text-slate-500" data-i18n="jigjiga_resident">Jigjiga</p></div>
-                        </div>
+                <!-- 3: Pediatrics & Maternal Care -->
+                <div class="bg-cover bg-center bg-no-repeat rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 border border-slate-200 group reveal" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYsuZY1l8nMBdlhs1lN4S2Io0OvA2S5eKZkjmGL08jlw&s=10');">
+                    <div class="p-8 bg-gradient-to-b from-white/90 via-white/80 to-white/70 hover:bg-white/60 transition duration-300 h-full">
+                        <div class="w-14 h-14 rounded-2xl bg-medical-50 text-medical-primary flex items-center justify-center text-2xl mb-6 group-hover:bg-medical-primary group-hover:text-white transition shadow-sm"><i class="fa-solid fa-child-reaching"></i></div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="serv_3_title">Pediatrics & Maternal Care</h3>
+                        <p class="text-slate-700 text-sm mb-6 leading-relaxed" data-i18n="serv_3_desc">Dedicated infant care, vaccination programs, prenatal support, and family health guidance.</p>
+                        <button onclick="openServiceModal('Pediatrics')" class="text-medical-primary font-semibold text-sm flex items-center hover:underline"><span data-i18n="learn_more">Learn More</span> <i class="fa-solid fa-chevron-right ml-2 text-xs"></i></button>
                     </div>
                 </div>
-                <!-- Video Card 2 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 flex flex-col group reveal">
-                    <div class="relative overflow-hidden aspect-video bg-slate-900">
-                        <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&q=80&w=600" onerror="this.onerror=null;this.src='https://placehold.co/600x338/0f172a/ffffff?text=Patient+Testimonial+2';" alt="Patient Testimonial 2 Thumbnail" class="w-full h-full object-cover opacity-85 group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-slate-950/30 flex items-center justify-center">
-                            <button onclick="playVideoPlaceholder()" class="w-14 h-14 rounded-full bg-medical-primary text-white flex items-center justify-center text-xl shadow-xl hover:scale-110 transition transform duration-200">
-                                <i class="fa-solid fa-play ml-0.5"></i>
-                            </button>
-                        </div>
-                        <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-[10px] font-semibold text-white uppercase tracking-wider">Patient Testimonial</div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                        <h3 class="font-bold text-slate-900 text-base">Patient Testimonial 2</h3>
-                        <p class="text-slate-600 text-sm italic leading-relaxed" data-i18n="test_2">"Deegaan nadiif ah, shaqaale edeb leh, iyo dhakhaatiir aqoon u leh shaqadooda. Mar walba waan ku talinayaa PUNTLAND Speciality Clinic."</p>
-                        <div class="flex items-center space-x-3 pt-2 border-t border-slate-100">
-                            <div class="w-8 h-8 rounded-full bg-teal-100 text-teal-700 font-bold text-xs flex items-center justify-center">P2</div>
-                            <div><h4 class="font-bold text-slate-900 text-xs">Verified Patient</h4><p class="text-[10px] text-slate-500" data-i18n="local_patient">Jigjiga</p></div>
-                        </div>
+
+                <!-- 4: Pharmacy Services -->
+                <div class="bg-cover bg-center bg-no-repeat rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 border border-slate-200 group reveal" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrC8FNq1CYW_cNP4aHCaT1fMOAOaqxmWVuCoH9FEY_Ng&s=10');">
+                    <div class="p-8 bg-gradient-to-b from-white/90 via-white/80 to-white/70 hover:bg-white/60 transition duration-300 h-full">
+                        <div class="w-14 h-14 rounded-2xl bg-medical-50 text-medical-primary flex items-center justify-center text-2xl mb-6 group-hover:bg-medical-primary group-hover:text-white transition shadow-sm"><i class="fa-solid fa-pills"></i></div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Pharmacy Services</h3>
+                        <p class="text-slate-700 text-sm mb-6 leading-relaxed">Fully stocked dispensary providing prescription medications, vaccines, and pharmaceutical consultations 24/7.</p>
+                        <button onclick="openServiceModal('Pharmacy Services')" class="text-medical-primary font-semibold text-sm flex items-center hover:underline"><span data-i18n="learn_more">Learn More</span> <i class="fa-solid fa-chevron-right ml-2 text-xs"></i></button>
                     </div>
                 </div>
-                <!-- Video Card 3 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 flex flex-col group reveal">
-                    <div class="relative overflow-hidden aspect-video bg-slate-900">
-                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=600" onerror="this.onerror=null;this.src='https://placehold.co/600x338/0f172a/ffffff?text=Patient+Testimonial+3';" alt="Patient Testimonial 3 Thumbnail" class="w-full h-full object-cover opacity-85 group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-slate-950/30 flex items-center justify-center">
-                            <button onclick="playVideoPlaceholder()" class="w-14 h-14 rounded-full bg-medical-primary text-white flex items-center justify-center text-xl shadow-xl hover:scale-110 transition transform duration-200">
-                                <i class="fa-solid fa-play ml-0.5"></i>
-                            </button>
-                        </div>
-                        <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-[10px] font-semibold text-white uppercase tracking-wider">Patient Testimonial</div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                        <h3 class="font-bold text-slate-900 text-base">Patient Testimonial 3</h3>
-                        <p class="text-slate-600 text-sm italic leading-relaxed" data-i18n="test_3">"Deegaan nadiif ah, shaqaale edeb leh, iyo dhakhaatiir aqoon u leh shaqadooda. Mar walba waan ku talinayaa PUNTLAND Speciality Clinic."</p>
-                        <div class="flex items-center space-x-3 pt-2 border-t border-slate-100">
-                            <div class="w-8 h-8 rounded-full bg-sky-100 text-sky-700 font-bold text-xs flex items-center justify-center">P3</div>
-                            <div><h4 class="font-bold text-slate-900 text-xs">Verified Patient</h4><p class="text-[10px] text-slate-500" data-i18n="community_member">Jigjiga</p></div>
-                        </div>
+
+                <!-- 5: ICU Services -->
+                <div class="bg-cover bg-center bg-no-repeat rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 border border-slate-200 group reveal" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQC5WKM6T2R0s9545VYCzAM48JkyjsbVspDI6T29LK3w&s=10');">
+                    <div class="p-8 bg-gradient-to-b from-white/90 via-white/80 to-white/70 hover:bg-white/60 transition duration-300 h-full">
+                        <div class="w-14 h-14 rounded-2xl bg-medical-50 text-medical-primary flex items-center justify-center text-2xl mb-6 group-hover:bg-medical-primary group-hover:text-white transition shadow-sm"><i class="fa-solid fa-bed-pulse"></i></div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">ICU Services</h3>
+                        <p class="text-slate-700 text-sm mb-6 leading-relaxed">Advanced Intensive Care Unit equipped with life-support monitors, ventilators, and specialized critical care nurses.</p>
+                        <button onclick="openServiceModal('ICU Services')" class="text-medical-primary font-semibold text-sm flex items-center hover:underline"><span data-i18n="learn_more">Learn More</span> <i class="fa-solid fa-chevron-right ml-2 text-xs"></i></button>
                     </div>
                 </div>
-                <!-- Video Card 4 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 flex flex-col group reveal">
-                    <div class="relative overflow-hidden aspect-video bg-slate-900">
-                        <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&q=80&w=600" onerror="this.onerror=null;this.src='https://placehold.co/600x338/0f172a/ffffff?text=Patient+Testimonial+4';" alt="Patient Testimonial 4 Thumbnail" class="w-full h-full object-cover opacity-85 group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-slate-950/30 flex items-center justify-center">
-                            <button onclick="playVideoPlaceholder()" class="w-14 h-14 rounded-full bg-medical-primary text-white flex items-center justify-center text-xl shadow-xl hover:scale-110 transition transform duration-200">
-                                <i class="fa-solid fa-play ml-0.5"></i>
-                            </button>
-                        </div>
-                        <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-[10px] font-semibold text-white uppercase tracking-wider">Patient Testimonial</div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                        <h3 class="font-bold text-slate-900 text-base">Patient Testimonial 4</h3>
-                        <p class="text-slate-600 text-sm italic leading-relaxed" data-i18n="test_1">"Deegaan nadiif ah, shaqaale edeb leh, iyo dhakhaatiir aqoon u leh shaqadooda. Mar walba waan ku talinayaa PUNTLAND Speciality Clinic."</p>
-                        <div class="flex items-center space-x-3 pt-2 border-t border-slate-100">
-                            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center">P4</div>
-                            <div><h4 class="font-bold text-slate-900 text-xs">Verified Patient</h4><p class="text-[10px] text-slate-500">Jigjiga</p></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Video Card 5 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 flex flex-col group reveal">
-                    <div class="relative overflow-hidden aspect-video bg-slate-900">
-                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=600" onerror="this.onerror=null;this.src='https://placehold.co/600x338/0f172a/ffffff?text=Patient+Testimonial+5';" alt="Patient Testimonial 5 Thumbnail" class="w-full h-full object-cover opacity-85 group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-slate-950/30 flex items-center justify-center">
-                            <button onclick="playVideoPlaceholder()" class="w-14 h-14 rounded-full bg-medical-primary text-white flex items-center justify-center text-xl shadow-xl hover:scale-110 transition transform duration-200">
-                                <i class="fa-solid fa-play ml-0.5"></i>
-                            </button>
-                        </div>
-                        <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-[10px] font-semibold text-white uppercase tracking-wider">Patient Testimonial</div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                        <h3 class="font-bold text-slate-900 text-base">Patient Testimonial 5</h3>
-                        <p class="text-slate-600 text-sm italic leading-relaxed" data-i18n="test_2">"Deegaan nadiif ah, shaqaale edeb leh, iyo dhakhaatiir aqoon u leh shaqadooda. Mar walba waan ku talinayaa PUNTLAND Speciality Clinic."</p>
-                        <div class="flex items-center space-x-3 pt-2 border-t border-slate-100">
-                            <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 font-bold text-xs flex items-center justify-center">P5</div>
-                            <div><h4 class="font-bold text-slate-900 text-xs">Verified Patient</h4><p class="text-[10px] text-slate-500">Jigjiga</p></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Video Card 6 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-200 flex flex-col group reveal">
-                    <div class="relative overflow-hidden aspect-video bg-slate-900">
-                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600" onerror="this.onerror=null;this.src='https://placehold.co/600x338/0f172a/ffffff?text=Patient+Testimonial+6';" alt="Patient Testimonial 6 Thumbnail" class="w-full h-full object-cover opacity-85 group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-slate-950/30 flex items-center justify-center">
-                            <button onclick="playVideoPlaceholder()" class="w-14 h-14 rounded-full bg-medical-primary text-white flex items-center justify-center text-xl shadow-xl hover:scale-110 transition transform duration-200">
-                                <i class="fa-solid fa-play ml-0.5"></i>
-                            </button>
-                        </div>
-                        <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-[10px] font-semibold text-white uppercase tracking-wider">Patient Testimonial</div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                        <h3 class="font-bold text-slate-900 text-base">Patient Testimonial 6</h3>
-                        <p class="text-slate-600 text-sm italic leading-relaxed" data-i18n="test_3">"Deegaan nadiif ah, shaqaale edeb leh, iyo dhakhaatiir aqoon u leh shaqadooda. Mar walba waan ku talinayaa PUNTLAND Speciality Clinic."</p>
-                        <div class="flex items-center space-x-3 pt-2 border-t border-slate-100">
-                            <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center justify-center">P6</div>
-                            <div><h4 class="font-bold text-slate-900 text-xs">Verified Patient</h4><p class="text-[10px] text-slate-500">Jigjiga</p></div>
-                        </div>
+
+                <!-- 6: Emergency Care Services -->
+                <div class="bg-cover bg-center bg-no-repeat rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 border border-slate-200 group reveal" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWut9Yf8Ld1VdOFNwmNWwctFhJ6-NldrRXUdgGJYyjQw&s=10');">
+                    <div class="p-8 bg-gradient-to-b from-white/90 via-white/80 to-white/70 hover:bg-white/60 transition duration-300 h-full">
+                        <div class="w-14 h-14 rounded-2xl bg-medical-50 text-medical-primary flex items-center justify-center text-2xl mb-6 group-hover:bg-medical-primary group-hover:text-white transition shadow-sm"><i class="fa-solid fa-truck-medical"></i></div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Emergency Care Services</h3>
+                        <p class="text-slate-700 text-sm mb-6 leading-relaxed">24/7 emergency response unit, trauma care, rapid triage, and ambulance dispatch for urgent medical attention.</p>
+                        <button onclick="openServiceModal('Emergency Care Services')" class="text-medical-primary font-semibold text-sm flex items-center hover:underline"><span data-i18n="learn_more">Learn More</span> <i class="fa-solid fa-chevron-right ml-2 text-xs"></i></button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============ OUR STORY ============ -->
+    <!-- ============ OUR STORY SECTION ============ -->
     <section id="story" class="w-full bg-slate-900 text-white py-16 lg:py-24 relative overflow-hidden reveal">
         <div class="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-6 space-y-6">
                 <span class="text-medical-accent font-bold uppercase tracking-widest text-xs bg-medical-900/50 px-3.5 py-1.5 rounded-full border border-medical-500/30" data-i18n="our_story_badge">Our Story</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight" data-i18n="story_heading">Building Trust & Quality Healthcare in Jijiga</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight" data-i18n="story_heading">Building Trust & Quality Healthcare in Garowe</h2>
                 <p class="text-slate-300 font-light leading-relaxed text-sm sm:text-base" data-i18n="story_desc">At PUNTLAND Speciality Clinic, our journey began with a simple vision: to provide accessible, high-standard private medical care with genuine human compassion. Watch our story to learn more about our commitment to the community.</p>
-                <div class="flex items-center space-x-4 pt-2">
-                    <button onclick="openBookingModal()" class="bg-medical-primary hover:bg-medical-600 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg transition text-sm">
-                        <span data-i18n="book_now">Book Appointment</span>
-                    </button>
-                    <a href="https://wa.me/2519000000" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg transition text-sm flex items-center">
-                        <i class="fa-brands fa-whatsapp mr-2"></i> <span data-i18n="whatsapp_us">WhatsApp Us</span>
-                    </a>
+                
+                <!-- Button row with nurse image -->
+                <div class="flex items-center gap-3 pt-2">
+                    <div class="flex-shrink-0">
+                        <img src="https://cdn.jsdelivr.net/gh/africantycoons1-spec/NEJASH-HOSPITAL@main/services_images/Gemini_Generated_Image_5gqt4b5gqt4b5gqt.jfif" 
+                             alt="Nurse" 
+                             class="w-12 h-12 sm:w-16 sm:h-16 md:w-24 md:h-24 rounded-full object-cover border-2 border-medical-primary/30 shadow-lg">
+                    </div>
+                    <div class="flex flex-nowrap items-center gap-1 sm:gap-2 md:gap-3">
+                        <button onclick="openBookingModal()" class="bg-medical-primary hover:bg-medical-600 text-white font-bold px-2.5 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3.5 rounded-xl shadow-lg transition text-[10px] sm:text-xs md:text-sm whitespace-nowrap">
+                            <span data-i18n="book_now">Book Appointment</span>
+                        </button>
+                        <a href="https://wa.me/2519000000" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2.5 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3.5 rounded-xl shadow-lg transition text-[10px] sm:text-xs md:text-sm whitespace-nowrap flex items-center">
+                            <i class="fa-brands fa-whatsapp mr-1 sm:mr-2"></i> <span data-i18n="whatsapp_us">WhatsApp Us</span>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="lg:col-span-6">
@@ -1113,18 +847,16 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
             <div class="space-y-6 lg:col-span-1">
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-medical-primary to-medical-accent flex items-center justify-center text-white font-bold text-xl shadow-md">
-                        <i class="fa-solid fa-house-medical"></i>
-                    </div>
-                    <div>
-                        <span class="text-2xl font-extrabold tracking-tight text-white">PUNTLAND <span class="text-medical-primary">Speciality Clinic</span></span>
-                        <span class="block text-[10px] uppercase tracking-widest text-slate-400 font-semibold" data-i18n="tagline">Private Medical Center</span>
-                    </div>
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-medical-primary to-medical-accent flex items-center justify-center text-white font-bold text-xl shadow-md"><i class="fa-solid fa-house-medical"></i></div>
+                    <div><span class="text-2xl font-extrabold tracking-tight text-white">PUNTLAND <span class="text-medical-primary">Speciality Clinic</span></span><span class="block text-[10px] uppercase tracking-widest text-slate-400 font-semibold" data-i18n="tagline">Private Medical Center</span></div>
                 </div>
-                <p class="text-sm text-slate-400 leading-relaxed" data-i18n="footer_desc">PUNTLAND Speciality Clinic provides dedicated healthcare services with expert physicians, advanced diagnostic support, and compassionate patient care in Jijiga.</p>
+                <p class="text-sm text-slate-400 leading-relaxed" data-i18n="footer_desc">PUNTLAND Speciality Clinic provides dedicated healthcare services with expert physicians, advanced diagnostic support, and compassionate patient care in Garowe.</p>
                 <div class="flex space-x-4">
                     <a href="https://wa.me/2519000000" target="_blank" class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center hover:bg-emerald-700 transition" title="WhatsApp"><i class="fa-brands fa-whatsapp text-lg"></i></a>
                     <a href="tel:+2519000000" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-medical-primary text-white flex items-center justify-center transition" title="Call Us"><i class="fa-solid fa-phone"></i></a>
+                    <a href="https://www.tiktok.com/@your-tiktok" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-medical-primary text-white flex items-center justify-center transition" title="TikTok"><i class="fa-brands fa-tiktok text-lg"></i></a>
+                    <a href="https://www.youtube.com/@your-youtube" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-medical-primary text-white flex items-center justify-center transition" title="YouTube"><i class="fa-brands fa-youtube text-lg"></i></a>
+                    <a href="https://web.facebook.com/your-facebook" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-medical-primary text-white flex items-center justify-center transition" title="Facebook"><i class="fa-brands fa-facebook text-lg"></i></a>
                 </div>
             </div>
             <div class="space-y-4">
@@ -1149,159 +881,88 @@
             <div class="space-y-4">
                 <h4 class="text-white font-bold text-base" data-i18n="footer_contact">Contact Us</h4>
                 <ul class="space-y-3 text-sm">
-                    <li class="flex items-start space-x-3">
-                        <i class="fa-solid fa-location-dot text-medical-primary mt-1"></i>
-                        <span><a href="https://share.google/m93yARfTiDm74CR3z" target="_blank" class="hover:underline text-slate-300">View on Google Maps</a></span>
-                    </li>
-                    <li class="flex items-center space-x-3">
-                        <i class="fa-solid fa-phone text-medical-primary"></i>
-                        <span class="font-mono">+2519000000</span>
-                    </li>
-                    <li class="flex items-center space-x-3">
-                        <i class="fa-brands fa-whatsapp text-emerald-500"></i>
-                        <a href="https://wa.me/2519000000" target="_blank" class="hover:underline text-emerald-400 font-medium font-mono">+2519000000</a>
-                    </li>
+                    <li class="flex items-start space-x-3"><i class="fa-solid fa-location-dot text-medical-primary mt-1"></i><span><a href="https://maps.app.goo.gl/your-map-link" target="_blank" class="hover:underline text-slate-300">View on Google Maps</a></span></li>
+                    <li class="flex items-center space-x-3"><i class="fa-solid fa-phone text-medical-primary"></i><span class="font-mono">+2519000000</span></li>
+                    <li class="flex items-center space-x-3"><i class="fa-brands fa-whatsapp text-emerald-500"></i><a href="https://wa.me/2519000000" target="_blank" class="hover:underline text-emerald-400 font-medium font-mono">+2519000000</a></li>
                 </ul>
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-8 pt-8 border-t border-slate-900 text-center text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p>&copy; 2026 PUNTLAND Speciality Clinic (Jigjiga). All rights reserved.</p>
-            <div class="flex space-x-6">
-                <a href="#" class="hover:text-white transition" data-i18n="privacy_policy">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition" data-i18n="terms_service">Terms of Service</a>
-            </div>
+            <p>&copy; 2026 PUNTLAND Speciality Clinic (Garowe). All rights reserved.</p>
+            <div class="flex space-x-6"><a href="#" class="hover:text-white transition" data-i18n="privacy_policy">Privacy Policy</a><a href="#" class="hover:text-white transition" data-i18n="terms_service">Terms of Service</a></div>
         </div>
     </footer>
 
-    <!-- ============ BACK TO TOP BUTTON ============ -->
-    <button id="back-to-top" aria-label="Back to top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
+    <!-- BACK TO TOP -->
+    <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 
-    <!-- ============ FLOATING ACTION BUTTONS ============ -->
+    <!-- FLOATING ACTIONS -->
     <div class="floating-actions" id="floating-actions">
-        <a href="https://wa.me/2519000000" target="_blank" class="whatsapp" aria-label="WhatsApp">
-            <i class="fa-brands fa-whatsapp"></i>
-        </a>
-        <a href="tel:+2519000000" class="phone" aria-label="Call us">
-            <i class="fa-solid fa-phone"></i>
-        </a>
+        <a href="https://wa.me/2519000000" target="_blank" class="whatsapp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="tel:+2519000000" class="phone" aria-label="Call us"><i class="fa-solid fa-phone"></i></a>
     </div>
 
-    <!-- ============ AI CHAT ============ -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <button onclick="toggleChat()" class="w-14 h-14 rounded-full bg-gradient-to-tr from-medical-primary to-medical-secondary text-white shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition transform duration-200 focus:outline-none">
-            <i class="fa-solid fa-robot"></i>
-        </button>
-        <!-- FIX: Chat window now uses max-h-[80vh] and overflow-auto -->
-        <div id="ai-chat-window" class="hidden absolute bottom-20 right-0 w-80 sm:w-96 bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[80vh] animate-fade-in">
-            <div class="bg-gradient-to-r from-slate-900 to-medical-dark text-white p-4 flex items-center justify-between flex-shrink-0">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-medical-500/20 border border-medical-500/40 flex items-center justify-center text-medical-400">
-                        <i class="fa-solid fa-robot"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-sm">PUNTLAND AI Assistant</h4>
-                        <span class="text-[10px] text-emerald-400 font-medium flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> Online 24/7</span>
-                    </div>
-                </div>
-                <button onclick="toggleChat()" class="text-slate-400 hover:text-white p-2">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
+    <!-- AI CHAT -->
+    <button id="chat-toggle-btn" onclick="toggleChat()" aria-label="AI Assistant"><i class="fa-solid fa-robot"></i></button>
+    <div id="ai-chat-window">
+        <div class="chat-header">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-medical-500/20 border border-medical-500/40 flex items-center justify-center text-medical-400"><i class="fa-solid fa-robot"></i></div>
+                <div><h4 class="font-bold text-sm">PUNTLAND AI Assistant</h4><span class="text-[10px] text-emerald-400 font-medium flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> Online 24/7</span></div>
             </div>
-            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 chat-scroll bg-slate-50 text-sm min-h-0">
-                <div class="flex items-start space-x-2">
-                    <div class="w-8 h-8 rounded-full bg-medical-primary text-white flex items-center justify-center text-xs font-bold shrink-0">AI</div>
-                    <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-sm text-slate-700 shadow-sm max-w-[85%]">
-                        Welcome to PUNTLAND Speciality Clinic in Jijiga! How can I assist you with appointments, doctors, or our medical services today?
-                    </div>
-                </div>
+            <button onclick="toggleChat()" class="text-slate-400 hover:text-white p-2"><i class="fa-solid fa-xmark text-lg"></i></button>
+        </div>
+        <div id="chat-messages" class="chat-body chat-scroll">
+            <div class="flex items-start space-x-2">
+                <div class="w-8 h-8 rounded-full bg-medical-primary text-white flex items-center justify-center text-xs font-bold shrink-0">AI</div>
+                <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-sm text-slate-700 shadow-sm max-w-[85%]">Welcome to PUNTLAND Speciality Clinic in Garowe! How can I assist you with appointments, doctors, or our medical services today?</div>
             </div>
-            <div class="px-3 py-2 bg-slate-100 flex gap-1.5 overflow-x-auto text-[11px] flex-shrink-0">
-                <button onclick="sendQuickPrompt('What are your working hours?')" class="bg-white border border-slate-200 px-2.5 py-1 rounded-full whitespace-nowrap text-slate-700 hover:bg-slate-50">Hours</button>
-                <button onclick="sendQuickPrompt('How do I book an appointment?')" class="bg-white border border-slate-200 px-2.5 py-1 rounded-full whitespace-nowrap text-slate-700 hover:bg-slate-50">Booking</button>
-                <button onclick="sendQuickPrompt('Where is PUNTLAND Speciality Clinic located?')" class="bg-white border border-slate-200 px-2.5 py-1 rounded-full whitespace-nowrap text-slate-700 hover:bg-slate-50">Location</button>
-            </div>
-            <div class="p-3 bg-white border-t border-slate-200 flex items-center space-x-2 flex-shrink-0">
-                <input type="text" id="chat-input" placeholder="Type your question..." onkeypress="handleChatKey(event)" class="flex-1 bg-slate-100 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-medical-primary">
-                <button onclick="sendChatMessage()" class="w-10 h-10 rounded-xl bg-medical-primary text-white flex items-center justify-center hover:bg-medical-600 transition shadow">
-                    <i class="fa-solid fa-paper-plane text-xs"></i>
-                </button>
-            </div>
+        </div>
+        <div class="px-3 py-2 bg-slate-100 flex gap-1.5 overflow-x-auto flex-shrink-0" style="flex-wrap:nowrap;">
+            <button onclick="sendQuickPrompt('What are your working hours?')" class="quick-prompt">Hours</button>
+            <button onclick="sendQuickPrompt('How do I book an appointment?')" class="quick-prompt">Booking</button>
+            <button onclick="sendQuickPrompt('Where is PUNTLAND Speciality Clinic located?')" class="quick-prompt">Location</button>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" placeholder="Type your question..." onkeypress="handleChatKey(event)">
+            <button onclick="sendChatMessage()"><i class="fa-solid fa-paper-plane text-sm"></i></button>
         </div>
     </div>
 
-    <!-- ============ BOOKING MODAL ============ -->
-    <!-- FIX: Added overflow-y-auto to overlay and max-h-[90vh] to inner container -->
-    <div id="booking-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl relative animate-fade-in max-h-[90vh] overflow-y-auto my-8">
-            <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+    <!-- MODAL -->
+    <div id="booking-modal">
+        <div class="modal-inner">
+            <button class="modal-close" onclick="closeBookingModal()"><i class="fa-solid fa-xmark"></i></button>
             <div class="flex items-center space-x-3 mb-6">
-                <div class="w-12 h-12 rounded-2xl bg-medical-50 text-medical-primary flex items-center justify-center text-xl">
-                    <i class="fa-regular fa-calendar-check"></i>
-                </div>
-                <div>
-                    <h3 class="text-xl font-extrabold text-slate-900" data-i18n="book_modal_title">Book Your Appointment</h3>
-                    <p class="text-xs text-slate-500" data-i18n="book_modal_sub">Fill in your details to secure a consultation at PUNTLAND Speciality Clinic.</p>
-                </div>
+                <div class="w-12 h-12 rounded-2xl bg-medical-50 text-medical-primary flex items-center justify-center text-xl"><i class="fa-regular fa-calendar-check"></i></div>
+                <div><h3 class="text-xl font-extrabold text-slate-900" data-i18n="book_modal_title">Book Your Appointment</h3><p class="text-xs text-slate-500" data-i18n="book_modal_sub">Fill in your details to secure a consultation at PUNTLAND Speciality Clinic.</p></div>
             </div>
             <form onsubmit="handleModalSubmit(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1" data-i18n="label_fullname">Full Name</label>
-                    <input type="text" id="modal-name" required placeholder="Enter your full name" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-medical-primary">
+                <div><label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1" data-i18n="label_fullname">Full Name</label><input type="text" id="modal-name" required placeholder="Enter your full name" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-medical-primary"></div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div><label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1" data-i18n="label_phone">Phone Number</label><input type="tel" id="modal-phone" required value="+2519000000" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium font-mono focus:outline-none focus:border-medical-primary"></div>
+                    <div><label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1" data-i18n="label_dept">Department</label><select id="modal-dept" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-medical-primary">
+                        <option>General Medicine</option><option>Diagnostics & Laboratory</option><option>Pediatrics & Maternal Care</option><option>Pharmacy Services</option><option>ICU Services</option><option>Emergency Care Services</option>
+                    </select></div>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1" data-i18n="label_phone">Phone Number</label>
-                        <input type="tel" id="modal-phone" required value="+2519000000" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium font-mono focus:outline-none focus:border-medical-primary">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1" data-i18n="label_dept">Department</label>
-                        <select id="modal-dept" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-medical-primary">
-                            <option>General Medicine</option>
-                            <option>Diagnostics & Laboratory</option>
-                            <option>Pediatrics & Maternal Care</option>
-                            <option>Pharmacy Services</option>
-                            <option>ICU Services</option>
-                            <option>Emergency Care Services</option>
-                        </select>
-                    </div>
+                    <div><label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1" data-i18n="label_date">Preferred Date</label><input type="date" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-medical-primary"></div>
+                    <div><label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1" data-i18n="label_time">Preferred Time</label><select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-medical-primary">
+                        <option>Morning (08:00 AM - 12:00 PM)</option><option>Afternoon (02:00 PM - 06:00 PM)</option><option>Evening / Urgent (06:00 PM - 10:00 PM)</option>
+                    </select></div>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1" data-i18n="label_date">Preferred Date</label>
-                        <input type="date" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-medical-primary">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1" data-i18n="label_time">Preferred Time</label>
-                        <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-medical-primary">
-                            <option>Morning (08:00 AM - 12:00 PM)</option>
-                            <option>Afternoon (02:00 PM - 06:00 PM)</option>
-                            <option>Evening / Urgent (06:00 PM - 10:00 PM)</option>
-                        </select>
-                    </div>
-                </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-medical-primary to-medical-secondary text-white font-bold py-4 rounded-xl shadow-lg shadow-medical-primary/20 hover:opacity-95 transition text-sm">
-                    <span data-i18n="confirm_booking_btn">Confirm Appointment Request</span>
-                </button>
+                <button type="submit" class="w-full bg-gradient-to-r from-medical-primary to-medical-secondary text-white font-bold py-4 rounded-xl shadow-lg shadow-medical-primary/20 hover:opacity-95 transition text-sm"><span data-i18n="confirm_booking_btn">Confirm Appointment Request</span></button>
             </form>
         </div>
     </div>
 
-    <!-- ============ TOAST ============ -->
-    <div id="toast-notification" class="fixed bottom-6 left-6 z-50 hidden bg-slate-900 text-white px-6 py-4 rounded-2xl shadow-2xl border border-slate-700 flex items-center space-x-3 animate-fade-in">
-        <div class="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold">
-            <i class="fa-solid fa-check"></i>
-        </div>
-        <div>
-            <h4 class="font-bold text-sm" data-i18n="toast_title">Appointment Requested!</h4>
-            <p class="text-xs text-slate-300" data-i18n="toast_sub">We will call +2519000000 shortly to confirm.</p>
-        </div>
+    <!-- TOAST -->
+    <div id="toast-notification">
+        <div class="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold"><i class="fa-solid fa-check"></i></div>
+        <div><h4 class="font-bold text-sm" data-i18n="toast_title">Appointment Requested!</h4><p class="text-xs text-slate-300" data-i18n="toast_sub">We will call +2519000000 shortly to confirm.</p></div>
     </div>
 
-    <!-- ============ JAVASCRIPT ============ -->
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
         // ============================================================
         // MULTILINGUAL DICTIONARIES
@@ -1320,9 +981,8 @@
                 nav_contact: "Contact",
                 ai_assistant_btn: "AI Assistant",
                 book_btn: "Book Appointment",
-                hero_badge: "Jigjiga's Leading Private Healthcare Clinic",
-                hero_title_1: "PUNTLAND Speciality Clinic – Expert Care",
-                hero_desc: "Your Health Is Our Priority. With experienced specialists, modern diagnostic technology, and patient-centered treatment tailored for your family's well-being at PUNTLAND Speciality Clinic in Jijiga.",
+                hero_badge: "Garowe's Leading Private Healthcare Clinic",
+                hero_desc: "Your Health Is Our Priority. With experienced specialists, modern diagnostic technology, and patient-centered treatment tailored for your family's well-being at PUNTLAND Speciality Clinic in Garowe.",
                 book_appointment_cta: "Book An Appointment",
                 whatsapp_cta: "Chat on WhatsApp",
                 welcome_mesh: "Welcome to PUNTLAND Speciality Clinic",
@@ -1349,19 +1009,19 @@
                 patient_trust: "Patient Trust",
                 testimonials_heading: "What Our Patients Say",
                 testimonials_sub: "Real feedback from patients who received exceptional care at PUNTLAND Speciality Clinic.",
-                test_1: "\"Deegaan nadiif ah, shaqaale edeb leh, iyo dhakhaatiir aqoon u leh shaqadooda. Mar walba waan ku talinayaa PUNTLAND Speciality Clinic.\"",
-                jigjiga_resident: "Jigjiga Resident",
-                test_2: "\"Deegaan nadiif ah, shaqaale edeb leh, iyo dhakhaatiir aqoon u leh shaqadooda. Mar walba waan ku talinayaa PUNTLAND Speciality Clinic.\"",
+                test_1: "\"Daryeelka PUNTLAND Speciality Clinic wuxuu iga caawiyay inaan si dhakhso leh u bogsado. Dhakhaatiirtu waxay ahaayeen kuwo khibrad leh oo daryeel dhab ah na siiyay.\"",
+                jigjiga_resident: "Garowe Resident",
+                test_2: "\"Waxaan ku qanacsanahay adeegga caafimaadka ee PUNTLAND Speciality Clinic. Qalabka casriga ah iyo shaqaalaha edebka leh ayaa iga dhigay mid kalsooni ku qaba.\"",
                 local_patient: "Local Patient",
-                test_3: "\"Deegaan nadiif ah, shaqaale edeb leh, iyo dhakhaatiir aqoon u leh shaqadooda. Mar walba waan ku talinayaa PUNTLAND Speciality Clinic.\"",
+                test_3: "\"PUNTLAND Speciality Clinic waa meesha ugu fiican ee Garowe laga helo daryeel caafimaad oo heer sare ah. Waxaan ku talinayaa qof kasta oo caafimaadkiisa jecel.\"",
                 community_member: "Community Member",
                 our_story_badge: "Our Story",
-                story_heading: "Building Trust & Quality Healthcare in Jijiga",
+                story_heading: "Building Trust & Quality Healthcare in Garowe",
                 story_desc: "At PUNTLAND Speciality Clinic, our journey began with a simple vision: to provide accessible, high-standard private medical care with genuine human compassion. Watch our story to learn more about our commitment to the community.",
                 book_now: "Book Appointment",
                 whatsapp_us: "WhatsApp Us",
                 video_caption: "PUNTLAND Speciality Clinic Introduction & Facility Overview",
-                footer_desc: "PUNTLAND Speciality Clinic provides dedicated healthcare services with expert physicians, advanced diagnostic support, and compassionate patient care in Jijiga.",
+                footer_desc: "PUNTLAND Speciality Clinic provides dedicated healthcare services with expert physicians, advanced diagnostic support, and compassionate patient care in Garowe.",
                 footer_quick_links: "Quick Links",
                 footer_departments: "Departments",
                 footer_contact: "Contact Us",
@@ -1391,9 +1051,8 @@
                 nav_contact: "አግኙን",
                 ai_assistant_btn: "የAI ረዳት",
                 book_btn: "ቀጠሮ ይያዙ",
-                hero_badge: "የጅጅጋ መሪ የግል ህክምና ክሊኒክ",
-                hero_title_1: "PUNTLAND Speciality Clinic – ልዩ ክሊኒክ",
-                hero_desc: "የእርስዎ ጤና ቅድሚያችን ነው! PUNTLAND Speciality Clinic በጅጅጋ ከተማ ልምድ ያላቸው ሃኪሞች እና ዘመናዊ የላብራቶሪ መሣሪያዎች በአንድ ላይ ተሟልተዋል።",
+                hero_badge: "የጋሮዌ መሪ የግል ህክምና ክሊኒክ",
+                hero_desc: "የእርስዎ ጤና ቅድሚያችን ነው! PUNTLAND Speciality Clinic በጋሮዌ ከተማ ልምድ ያላቸው ሃኪሞች እና ዘመናዊ የላብራቶሪ መሣሪያዎች በአንድ ላይ ተሟልተዋል።",
                 book_appointment_cta: "ቀጠሮ ይያዙ",
                 whatsapp_cta: "በዋትስአፕ ያነጋገሩን",
                 welcome_mesh: "ወደ PUNTLAND Speciality Clinic እንኳን በደህና መጡ",
@@ -1420,26 +1079,26 @@
                 patient_trust: "የታካሚዎች እምነት",
                 testimonials_heading: "ታካሚዎቻችን ምን ይላሉ?",
                 testimonials_sub: "በPUNTLAND Speciality Clinic ጥራት ያለው ሕክምና ካገኙ ታካሚዎች የተሰጡ አስተያየቶች።",
-                test_1: "\"Deegaan nadiif ah, shaqaale edeb leh, iyo dhakhaatiir aqoon u leh shaqadooda. Mar walba waan ku talinayaa PUNTLAND Speciality Clinic.\"",
-                jigjiga_resident: "የጅጅጋ ነዋሪ",
-                test_2: "\"Deegaan nadiif ah, shaqaale edeb leh, iyo dhakhaatiir aqoon u leh shaqadooda. Mar walba waan ku talinayaa PUNTLAND Speciality Clinic.\"",
+                test_1: "\"Daryeelka PUNTLAND Speciality Clinic wuxuu iga caawiyay inaan si dhakhso leh u bogsado. Dhakhaatiirtu waxay ahaayeen kuwo khibrad leh oo daryeel dhab ah na siiyay.\"",
+                jigjiga_resident: "የጋሮዌ ነዋሪ",
+                test_2: "\"Waxaan ku qanacsanahay adeegga caafimaadka ee PUNTLAND Speciality Clinic. Qalabka casriga ah iyo shaqaalaha edebka leh ayaa iga dhigay mid kalsooni ku qaba.\"",
                 local_patient: "የአካባቢ ታካሚ",
-                test_3: "\"Deegaan nadiif ah, shaqaale edeb leh, iyo dhakhaatiir aqoon u leh shaqadooda. Mar walba waan ku talinayaa PUNTLAND Speciality Clinic.\"",
+                test_3: "\"PUNTLAND Speciality Clinic waa meesha ugu fiican ee Garowe laga helo daryeel caafimaad oo heer sare ah. Waxaan ku talinayaa qof kasta oo caafimaadkiisa jecel.\"",
                 community_member: "የማህበረሰብ አባል",
                 our_story_badge: "ታሪካችን",
-                story_heading: "በጅጅጋ ጥራት ያለው የህክምና አገልግሎት መስጠት",
+                story_heading: "በጋሮዌ ጥራት ያለው የህክምና አገልግሎት መስጠት",
                 story_desc: "በPUNTLAND Speciality Clinic ጉዟችን የጀመረው ተደራሽ እና ከፍተኛ ደረጃ ያለው የግል ህክምና በሰብአዊነት ስሜት ለመስጠት ነው።",
                 book_now: "ቀጠሮ ይያዙ",
                 whatsapp_us: "በዋትስአፕ ያነጋገሩን",
                 video_caption: "የPUNTLAND Speciality Clinic መግቢያ እና የተቋም አጠቃላይ እይታ",
-                footer_desc: "PUNTLAND Speciality Clinic በጅጅጋ ከተማ በባለሙያ ሐኪሞች እና በዘመናዊ የምርመራ ድጋፍ የታገዘ ጥራት ያለው የህክምና አገልግሎት ይሰጣል።",
+                footer_desc: "PUNTLAND Speciality Clinic በጋሮዌ ከተማ በባለሙያ ሐኪሞች እና በዘመናዊ የምርመራ ድጋፍ የታገዘ ጥራት ያለው የህክምና አገልግሎት ይሰጣል።",
                 footer_quick_links: "ፈጣን አገናኞች",
                 footer_departments: "ክፍሎች",
                 footer_contact: "አግኙን",
                 privacy_policy: "የግላዊነት ፖሊሲ",
                 terms_service: "የአገልግሎት ውሎች",
                 book_modal_title: "ቀጠሮዎን ይያዙ",
-                book_modal_sub: "በPUNTLAND Speciality Clinic ለመታከም ዝርዝር መረጃዎን ይሙሉ አጭር መረጃ።",
+                book_modal_sub: "በPUNTLAND Speciality Clinic ለመታከም ዝርዝር መረጃዎን ይሙሉ",
                 label_fullname: "ሙሉ ስም",
                 label_phone: "ስልክ ቁጥር",
                 label_dept: "ክፍል",
@@ -1462,8 +1121,7 @@
                 nav_contact: "Nala Soo Xiriir",
                 ai_assistant_btn: "Kaaliyaha AI",
                 book_btn: "Ballansato",
-                hero_badge: "Xarunta Caafimaad ee Hormuudka ka ah Jigjiga",
-                hero_title_1: "PUNTLAND Speciality Clinic – Daryeel Khabiir",
+                hero_badge: "Xarunta Caafimaad ee Hormuudka ka ah Garowe",
                 hero_desc: "Daryeelka caafimaadkaaga ayaa ah mudnaantayada. PUNTLAND Speciality Clinic waxay bixisaa daryeel caafimaad oo lagu kalsoonaan karo iyadoo ay joogaan dhakhaatiir khibrad leh, tignoolajiyad casri ah, iyo daryeel qoyskaaga ku habboon.",
                 book_appointment_cta: "Ballan Qabso",
                 whatsapp_cta: "Nagala Hadal WhatsApp",
@@ -1491,19 +1149,19 @@
                 patient_trust: "Kalsoonida Bukaanka",
                 testimonials_heading: "Waxaa Ay Bukaannadeedu Dhaheen",
                 testimonials_sub: "Fikradaha dhabta ah ee bukaannada ka helay daryeelka PUNTLAND Speciality Clinic.",
-                test_1: "\"Deegaan nadiif ah, shaqaale edeb leh, iyo dhakhaatiir aqoon u leh shaqadooda. Mar walba waan ku talinayaa PUNTLAND Speciality Clinic.\"",
-                jigjiga_resident: "Degganaha Jigjiga",
-                test_2: "\"Deegaan nadiif ah, shaqaale edeb leh, iyo dhakhaatiir aqoon u leh shaqadooda. Mar walba waan ku talinayaa PUNTLAND Speciality Clinic.\"",
+                test_1: "\"Daryeelka PUNTLAND Speciality Clinic wuxuu iga caawiyay inaan si dhakhso leh u bogsado. Dhakhaatiirtu waxay ahaayeen kuwo khibrad leh oo daryeel dhab ah na siiyay.\"",
+                jigjiga_resident: "Degganaha Garowe",
+                test_2: "\"Waxaan ku qanacsanahay adeegga caafimaadka ee PUNTLAND Speciality Clinic. Qalabka casriga ah iyo shaqaalaha edebka leh ayaa iga dhigay mid kalsooni ku qaba.\"",
                 local_patient: "Bukaanka Deegaanka",
-                test_3: "\"Deegaan nadiif ah, shaqaale edeb leh, iyo dhakhaatiir aqoon u leh shaqadooda. Mar walba waan ku talinayaa PUNTLAND Speciality Clinic.\"",
+                test_3: "\"PUNTLAND Speciality Clinic waa meesha ugu fiican ee Garowe laga helo daryeel caafimaad oo heer sare ah. Waxaan ku talinayaa qof kasta oo caafimaadkiisa jecel.\"",
                 community_member: "Xubin Bulshada ka tirsan",
                 our_story_badge: "Sheekadeena",
-                story_heading: "Dhisidda Kalsoonida & Daryeelka Tayada Leh ee Jigjiga",
+                story_heading: "Dhisidda Kalsoonida & Daryeelka Tayada Leh ee Garowe",
                 story_desc: "PUNTLAND Speciality Clinic waxay ka bilaabatay aragti fudud: in la bixiyo daryeel caafimaad oo tayo sarreeya oo ay weheliso naxariis bani'aadamnimo.",
                 book_now: "Ballan Qabso",
                 whatsapp_us: "Nagala Xiriir WhatsApp",
                 video_caption: "Hordhaca & Dulmarka Xarunta PUNTLAND Speciality Clinic",
-                footer_desc: "PUNTLAND Speciality Clinic waxay bixisaa adeegyo caafimaad oo heersare ah oo ay weheliyaan dhakhaatiir khibrad leh iyo taageero shaybaar oo Jigjiga ku taalla.",
+                footer_desc: "PUNTLAND Speciality Clinic waxay bixisaa adeegyo caafimaad oo heersare ah oo ay weheliyaan dhakhaatiir khibrad leh iyo taageero shaybaar oo Garowe ku taalla.",
                 footer_quick_links: "Xiriirinta Degdegga ah",
                 footer_departments: "Waaxyaha",
                 footer_contact: "Nala Soo Xiriir",
@@ -1533,19 +1191,55 @@
             });
             const labels = { en: 'English', am: 'አማርኛ', so: 'Af-Somali' };
             const shortLabels = { en: 'EN', am: 'AM', so: 'SO' };
-            document.getElementById('current-lang-label').textContent = labels[lang];
-            document.getElementById('mobile-lang-label').textContent = shortLabels[lang];
-            document.getElementById('lang-dropdown').classList.add('hidden');
+            
+            const desktopLabel = document.getElementById('current-lang-label');
+            if (desktopLabel) {
+                desktopLabel.textContent = labels[lang];
+            }
+            
+            const mobileLabel = document.getElementById('mobile-lang-label');
+            if (mobileLabel) {
+                mobileLabel.textContent = labels[lang];
+            }
+            
+            const dropdown = document.getElementById('lang-dropdown');
+            if (dropdown) {
+                dropdown.classList.add('hidden');
+            }
         }
 
         function toggleLangDropdown() {
-            document.getElementById('lang-dropdown').classList.toggle('hidden');
-        }
-        window.addEventListener('click', (e) => {
-            if (!e.target.closest('button[onclick="toggleLangDropdown()"]')) {
-                const dd = document.getElementById('lang-dropdown');
-                if (dd && !dd.classList.contains('hidden')) dd.classList.add('hidden');
+            const dropdown = document.getElementById('lang-dropdown');
+            if (dropdown) {
+                dropdown.classList.toggle('hidden');
             }
+        }
+
+        // ===== MOBILE LANGUAGE CYCLE =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const langBtn = document.getElementById('lang-toggle-btn');
+            if (!langBtn) return;
+
+            function cycleLanguage() {
+                const languages = ['en', 'am', 'so'];
+                const currentIndex = languages.indexOf(currentLang);
+                const nextIndex = (currentIndex + 1) % languages.length;
+                const nextLang = languages[nextIndex];
+                setLanguage(nextLang);
+            }
+
+            langBtn.addEventListener('click', function(e) {
+                const isMobile = window.innerWidth < 768;
+                if (isMobile) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    cycleLanguage();
+                    const dropdown = document.getElementById('lang-dropdown');
+                    if (dropdown && !dropdown.classList.contains('hidden')) {
+                        dropdown.classList.add('hidden');
+                    }
+                }
+            });
         });
 
         // Mobile menu
@@ -1555,9 +1249,7 @@
             mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         }
 
-        function toggleMobileMenu() {
-            document.getElementById('mobile-menu').classList.add('hidden');
-        }
+        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.add('hidden'); }
 
         function toggleMobileSubmenu(btn) {
             const parent = btn.closest('.mobile-accordion');
@@ -1570,25 +1262,30 @@
             }
         }
 
-        // Modal
+        // ===== MODAL =====
         function openBookingModal() {
-            document.getElementById('booking-modal').classList.remove('hidden');
+            document.getElementById('booking-modal').classList.add('show');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeBookingModal() {
-            document.getElementById('booking-modal').classList.add('hidden');
+            document.getElementById('booking-modal').classList.remove('show');
+            document.body.style.overflow = '';
         }
+        document.getElementById('booking-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeBookingModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBookingModal();
+                document.getElementById('ai-chat-window').classList.remove('show');
+            }
+        });
 
         function handleModalSubmit(e) {
             e.preventDefault();
             closeBookingModal();
-            showToast();
-        }
-
-        function showToast() {
-            const toast = document.getElementById('toast-notification');
-            toast.classList.remove('hidden');
-            setTimeout(() => toast.classList.add('hidden'), 4500);
+            showToast('Appointment Requested!', 'We will call +2519000000 shortly to confirm.');
         }
 
         function openServiceModal(serviceName) {
@@ -1599,79 +1296,49 @@
             }
         }
 
-        function playVideoPlaceholder() {
-            showToastMessage("Video player loading. You can watch PUNTLAND Speciality Clinic's introduction video or call +2519000000!");
-        }
-
-        function showToastMessage(msg) {
+        function showToast(title, msg) {
             const toast = document.getElementById('toast-notification');
-            toast.querySelector('h4').textContent = "PUNTLAND Speciality Clinic Notice";
-            toast.querySelector('p').textContent = msg;
-            toast.classList.remove('hidden');
-            setTimeout(() => toast.classList.add('hidden'), 4500);
+            toast.querySelector('h4').textContent = title || 'Appointment Requested!';
+            toast.querySelector('p').textContent = msg || 'We will call +2519000000 shortly to confirm.';
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 4500);
         }
 
-        // Specialist filter
-        function filterSpecialists(category) {
-            const cards = document.querySelectorAll('.spec-card');
-            ['all', 'general', 'internal', 'pediatrics', 'surgery'].forEach(btn => {
-                const bEl = document.getElementById(`filter-${btn}`);
-                if (bEl) {
-                    bEl.className = btn === category ?
-                        "px-4 py-2 rounded-xl text-xs font-bold bg-medical-primary text-white shadow-sm transition" :
-                        "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200 transition";
-                }
-            });
-            cards.forEach(card => {
-                card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
-            });
-        }
+        function showToastMessage(msg) { showToast('PUNTLAND Speciality Clinic Notice', msg); }
 
-        // AI Chat
+        function playVideoPlaceholder() { showToastMessage('Video player loading. You can watch PUNTLAND Speciality Clinic\'s introduction video or call +2519000000!'); }
+
+        // ===== AI CHAT =====
         function toggleChat() {
-            document.getElementById('ai-chat-window').classList.toggle('hidden');
+            document.getElementById('ai-chat-window').classList.toggle('show');
         }
 
-        function handleChatKey(e) {
-            if (e.key === 'Enter') sendChatMessage();
-        }
+        function handleChatKey(e) { if (e.key === 'Enter') sendChatMessage(); }
 
-        function sendQuickPrompt(text) {
-            document.getElementById('chat-input').value = text;
-            sendChatMessage();
-        }
+        function sendQuickPrompt(text) { document.getElementById('chat-input').value = text;
+            sendChatMessage(); }
 
         function sendChatMessage() {
             const input = document.getElementById('chat-input');
             const msg = input.value.trim();
             if (!msg) return;
             const container = document.getElementById('chat-messages');
-            container.innerHTML += `
-                <div class="flex items-start justify-end space-x-2">
-                    <div class="bg-medical-primary text-white p-3 rounded-2xl rounded-tr-sm text-sm shadow-sm max-w-[85%]">${escapeHtml(msg)}</div>
-                </div>
-            `;
+            container.innerHTML += `<div class="flex items-start justify-end space-x-2"><div class="bg-medical-primary text-white p-3 rounded-2xl rounded-tr-sm text-sm shadow-sm max-w-[85%]">${escapeHtml(msg)}</div></div>`;
             input.value = '';
             container.scrollTop = container.scrollHeight;
-
             setTimeout(() => {
-                let reply = "Thank you for reaching out to PUNTLAND Speciality Clinic in Jijiga! We are open 24/7 for emergencies. You can reach us directly at +2519000000 or via WhatsApp at +2519000000.";
+                let reply = "Thank you for reaching out to PUNTLAND Speciality Clinic in Garowe! We are open 24/7 for emergencies. You can reach us directly at +2519000000 or via WhatsApp at +2519000000.";
                 const lower = msg.toLowerCase();
                 if (lower.includes('appointment') || lower.includes('book') || lower.includes('ቀጠሮ') || lower.includes('ballansato')) {
                     reply = "You can easily book an appointment by clicking the 'Book Appointment' button at the top of the page or calling us at +2519000000.";
                 } else if (lower.includes('phone') || lower.includes('number') || lower.includes('call') || lower.includes('ስልክ')) {
                     reply = "PUNTLAND Speciality Clinic phone number & WhatsApp: +2519000000.";
                 } else if (lower.includes('address') || lower.includes('location') || lower.includes('where') || lower.includes('አድራሻ')) {
-                    reply = "PUNTLAND Speciality Clinic is centrally located in Jijiga. View on Google Maps: https://share.google/m93yARfTiDm74CR3z";
+                    reply = "PUNTLAND Speciality Clinic is centrally located in Garowe. View on Google Maps via the link on our website.";
                 } else if (lower.includes('hour') || lower.includes('time') || lower.includes('open') || lower.includes('ሰዓት')) {
                     reply = "PUNTLAND Speciality Clinic emergency & inpatient care is open 24 hours a day, 7 days a week!";
                 }
-                container.innerHTML += `
-                    <div class="flex items-start space-x-2">
-                        <div class="w-8 h-8 rounded-full bg-medical-primary text-white flex items-center justify-center text-xs font-bold shrink-0">AI</div>
-                        <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-sm text-slate-700 text-sm shadow-sm max-w-[85%]">${escapeHtml(reply)}</div>
-                    </div>
-                `;
+                container.innerHTML += `<div class="flex items-start space-x-2"><div class="w-8 h-8 rounded-full bg-medical-primary text-white flex items-center justify-center text-xs font-bold shrink-0">AI</div><div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-sm text-slate-700 text-sm shadow-sm max-w-[85%]">${escapeHtml(reply)}</div></div>`;
                 container.scrollTop = container.scrollHeight;
             }, 700);
         }
@@ -1681,10 +1348,8 @@
             return text.replace(/[&<>"']/g, m => map[m]);
         }
 
-        // ============================================================
-        // TYPING TEXT EFFECT
-        // ============================================================
-        function typeText(element, text, speed = 60) {
+        // ===== TYPING EFFECT =====
+        function typeText(element, text, speed = 50) {
             if (!element) return;
             let i = 0;
             element.textContent = '';
@@ -1706,9 +1371,7 @@
             type();
         }
 
-        // ============================================================
-        // SCROLL REVEAL
-        // ============================================================
+        // ===== SCROLL REVEAL =====
         function initScrollReveal() {
             const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
             const observer = new IntersectionObserver((entries) => {
@@ -1722,9 +1385,7 @@
             reveals.forEach(el => observer.observe(el));
         }
 
-        // ============================================================
-        // STATS COUNTER
-        // ============================================================
+        // ===== STATS COUNTER =====
         function initStatsCounter() {
             const stats = document.querySelectorAll('.stat-number');
             let animated = false;
@@ -1739,8 +1400,7 @@
                             const increment = Math.ceil(target / 60);
                             const timer = setInterval(() => {
                                 current += increment;
-                                if (current >= target) { current = target;
-                                    clearInterval(timer); }
+                                if (current >= target) { current = target; clearInterval(timer); }
                                 stat.textContent = current + (target > 100 ? '+' : '');
                             }, 30);
                         });
@@ -1752,9 +1412,7 @@
             if (section) observer.observe(section);
         }
 
-        // ============================================================
-        // BACK TO TOP
-        // ============================================================
+        // ===== BACK TO TOP =====
         function initBackToTop() {
             const btn = document.getElementById('back-to-top');
             if (!btn) return;
@@ -1764,9 +1422,7 @@
             btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         }
 
-        // ============================================================
-        // FLOATING ACTIONS
-        // ============================================================
+        // ===== FLOATING ACTIONS =====
         function initFloatingActions() {
             const actions = document.getElementById('floating-actions');
             if (!actions) return;
@@ -1781,80 +1437,133 @@
             });
         }
 
-        // ============================================================
-        // HERO BACKGROUND SLIDER & THREE.JS
-        // ============================================================
-        window.addEventListener('load', () => {
-            // Background slider
-            const slides = document.querySelectorAll('.hero-bg-slide');
-            if (slides.length > 0) {
-                let idx = 0;
-                setInterval(() => {
-                    slides[idx].classList.remove('opacity-100');
-                    slides[idx].classList.add('opacity-0');
-                    idx = (idx + 1) % slides.length;
-                    slides[idx].classList.remove('opacity-0');
-                    slides[idx].classList.add('opacity-100');
-                }, 5000);
+        // ===== HERO SLIDER & THREE.JS (OPTIMIZED) =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstSlide = document.querySelector('.hero-bg-slide:not(.hidden)');
+            if (firstSlide) {
+                firstSlide.classList.add('opacity-100');
+                firstSlide.classList.remove('opacity-0');
             }
 
-            // Three.js particles
-            const canvas = document.getElementById('hero-canvas');
-            if (canvas) {
-                const scene = new THREE.Scene();
-                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-                const geo = new THREE.BufferGeometry();
-                const count = 220;
-                const pos = new Float32Array(count * 3);
-                for (let i = 0; i < count * 3; i++) pos[i] = (Math.random() - 0.5) * 16;
-                geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-
-                const mat = new THREE.PointsMaterial({
-                    size: 0.045,
-                    color: 0x38bdf8,
-                    transparent: true,
-                    opacity: 0.65
+            function getActiveSlides() {
+                const allSlides = document.querySelectorAll('.hero-bg-slide');
+                const isMobile = window.innerWidth < 768;
+                return Array.from(allSlides).filter(slide => {
+                    if (isMobile && slide.classList.contains('hidden')) {
+                        return false;
+                    }
+                    return true;
                 });
-                const mesh = new THREE.Points(geo, mat);
-                scene.add(mesh);
-                camera.position.z = 5;
+            }
 
-                const clock = new THREE.Clock();
+            setTimeout(() => {
+                let slides = getActiveSlides();
+                if (slides.length > 0) {
+                    slides.forEach((s, i) => {
+                        if (i === 0) {
+                            s.classList.add('opacity-100');
+                            s.classList.remove('opacity-0');
+                        } else {
+                            s.classList.remove('opacity-100');
+                            s.classList.add('opacity-0');
+                        }
+                    });
 
-                function animate() {
-                    requestAnimationFrame(animate);
-                    const t = clock.getElapsedTime();
-                    mesh.rotation.y = t * 0.03;
-                    mesh.rotation.x = t * 0.015;
-                    renderer.render(scene, camera);
+                    let idx = 0;
+                    const ROTATION_INTERVAL = 2500;
+                    let intervalId = setInterval(() => {
+                        const currentSlides = getActiveSlides();
+                        if (currentSlides.length !== slides.length) {
+                            document.querySelectorAll('.hero-bg-slide').forEach(s => {
+                                s.classList.remove('opacity-100');
+                                s.classList.add('opacity-0');
+                            });
+                            slides = currentSlides;
+                            if (slides.length > 0) {
+                                slides[0].classList.remove('opacity-0');
+                                slides[0].classList.add('opacity-100');
+                                idx = 0;
+                            }
+                            return;
+                        }
+                        if (slides.length > 0) {
+                            slides[idx].classList.remove('opacity-100');
+                            slides[idx].classList.add('opacity-0');
+                            idx = (idx + 1) % slides.length;
+                            slides[idx].classList.remove('opacity-0');
+                            slides[idx].classList.add('opacity-100');
+                        }
+                    }, ROTATION_INTERVAL);
                 }
-                animate();
+            }, 200);
 
-                window.addEventListener('resize', () => {
-                    camera.aspect = window.innerWidth / window.innerHeight;
-                    camera.updateProjectionMatrix();
+            setTimeout(() => {
+                const canvas = document.getElementById('hero-canvas');
+                if (canvas && typeof THREE !== 'undefined') {
+                    const scene = new THREE.Scene();
+                    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
                     renderer.setSize(window.innerWidth, window.innerHeight);
-                });
-            }
+                    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                    const geo = new THREE.BufferGeometry();
+                    const count = 150;
+                    const pos = new Float32Array(count * 3);
+                    for (let i = 0; i < count * 3; i++) pos[i] = (Math.random() - 0.5) * 16;
+                    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+                    const mat = new THREE.PointsMaterial({ size: 0.045, color: 0x38bdf8, transparent: true, opacity: 0.65 });
+                    const mesh = new THREE.Points(geo, mat);
+                    scene.add(mesh);
+                    camera.position.z = 5;
+                    const clock = new THREE.Clock();
 
-            // Typing effect on hero heading
-            const typingEl = document.querySelector('.typing-effect');
-            if (typingEl) {
-                const text = typingEl.dataset.text || typingEl.textContent.trim();
-                typingEl.textContent = '';
-                typeText(typingEl, text, 50);
-            }
+                    function animate() {
+                        requestAnimationFrame(animate);
+                        const t = clock.getElapsedTime();
+                        mesh.rotation.y = t * 0.03;
+                        mesh.rotation.x = t * 0.015;
+                        renderer.render(scene, camera);
+                    }
+                    animate();
+                    window.addEventListener('resize', () => {
+                        camera.aspect = window.innerWidth / window.innerHeight;
+                        camera.updateProjectionMatrix();
+                        renderer.setSize(window.innerWidth, window.innerHeight);
+                    });
+                }
+            }, 2500);
 
-            // Init other effects
-            initScrollReveal();
-            initStatsCounter();
-            initBackToTop();
-            initFloatingActions();
+            setTimeout(() => {
+                const typingEl = document.querySelector('.typing-effect');
+                if (typingEl) {
+                    const text = typingEl.dataset.text || typingEl.textContent.trim();
+                    typingEl.textContent = '';
+                    typeText(typingEl, text, 50);
+                }
+            }, 500);
+
+            setTimeout(() => {
+                initScrollReveal();
+            }, 300);
+
+            setTimeout(() => {
+                initStatsCounter();
+            }, 800);
+
+            setTimeout(() => {
+                initBackToTop();
+                initFloatingActions();
+            }, 500);
         });
+
+        setTimeout(() => {
+            document.querySelectorAll('.hero-bg-slide img').forEach(img => {
+                const src = img.getAttribute('src');
+                if (src) {
+                    const preload = new Image();
+                    preload.src = src;
+                }
+            });
+        }, 1000);
     </script>
 </body>
 </html>
